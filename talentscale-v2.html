@@ -1,0 +1,1688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talent Scale — Helping Disruptors Hire Incredible Talent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   CSS CUSTOM PROPERTIES & RESET
+   ═══════════════════════════════════════════ */
+:root {
+  --violet-50: #f5f3ff;
+  --violet-100: #ede9fe;
+  --violet-200: #ddd6fe;
+  --violet-300: #c4b5fd;
+  --violet-400: #a78bfa;
+  --violet-500: #8b5cf6;
+  --violet-600: #7c3aed;
+  --violet-700: #6d28d9;
+  --violet-800: #5b21b6;
+  --violet-900: #4c1d95;
+  --violet-950: #2e1065;
+
+  --surface-0: #06050e;
+  --surface-1: #0c0b18;
+  --surface-2: #13112a;
+  --surface-3: #1a1640;
+
+  --text-primary: #f0ecff;
+  --text-secondary: #a8a0c8;
+  --text-muted: #6b6488;
+
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: var(--surface-0);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════
+   GLOBAL NOISE TEXTURE OVERLAY
+   ═══════════════════════════════════════════ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ═══════════════════════════════════════════
+   SCROLL-DRIVEN REVEAL ANIMATIONS
+   ═══════════════════════════════════════════ */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeSlideLeft {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeSlideRight {
+  from { opacity: 0; transform: translateX(-60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleReveal {
+  from { opacity: 0; transform: scale(0.92); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+}
+
+.reveal-scale.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger children */
+.stagger-children .reveal:nth-child(1) { transition-delay: 0s; }
+.stagger-children .reveal:nth-child(2) { transition-delay: 0.1s; }
+.stagger-children .reveal:nth-child(3) { transition-delay: 0.2s; }
+.stagger-children .reveal:nth-child(4) { transition-delay: 0.3s; }
+.stagger-children .reveal:nth-child(5) { transition-delay: 0.4s; }
+.stagger-children .reveal:nth-child(6) { transition-delay: 0.5s; }
+
+/* ═══════════════════════════════════════════
+   NAVIGATION
+   ═══════════════════════════════════════════ */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.4s ease, backdrop-filter 0.4s ease, padding 0.4s ease;
+}
+
+.nav.scrolled {
+  background: rgba(6, 5, 14, 0.8);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  padding: 14px 48px;
+  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.nav-logo svg {
+  width: 36px;
+  height: 36px;
+}
+
+.nav-logo-text {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1.5px;
+  background: var(--violet-500);
+  transition: width 0.3s var(--ease-out-expo);
+}
+
+.nav-links a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-cta {
+  padding: 10px 24px;
+  background: var(--violet-600);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-cta:hover {
+  background: var(--violet-500);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.3);
+}
+
+/* Mobile menu */
+.nav-mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-mobile-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  margin: 5px 0;
+  transition: 0.3s;
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════════════════
+   HERO SECTION
+   ═══════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 48px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradient mesh background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 60%, rgba(139, 92, 246, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 40% at 50% 80%, rgba(196, 181, 253, 0.05) 0%, transparent 60%);
+  z-index: 0;
+}
+
+/* Floating grid lines */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+}
+
+/* Converge logo mark above headline */
+.hero-mark {
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeSlideUp 1s var(--ease-out-expo) 0.2s forwards;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 20px;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--violet-300);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeSlideUp 1s var(--ease-out-expo) 0.3s forwards;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--violet-400);
+  animation: pulse 2s ease infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+.hero h1 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(42px, 6.5vw, 80px);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -1.5px;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeSlideUp 1s var(--ease-out-expo) 0.5s forwards;
+}
+
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--violet-400), var(--violet-300), #e9d5ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: clamp(16px, 1.8vw, 20px);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto 44px;
+  line-height: 1.7;
+  font-weight: 300;
+  opacity: 0;
+  animation: fadeSlideUp 1s var(--ease-out-expo) 0.7s forwards;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  animation: fadeSlideUp 1s var(--ease-out-expo) 0.9s forwards;
+}
+
+.btn-primary {
+  padding: 16px 36px;
+  background: var(--violet-600);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.4);
+}
+
+.btn-primary:hover::before {
+  opacity: 1;
+}
+
+.btn-secondary {
+  padding: 16px 36px;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.btn-secondary:hover {
+  border-color: var(--violet-500);
+  color: var(--text-primary);
+  background: rgba(124, 58, 237, 0.05);
+}
+
+/* Scroll indicator */
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
+  animation: fadeSlideUp 1s var(--ease-out-expo) 1.2s forwards;
+}
+
+.hero-scroll span {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--violet-600), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+@keyframes scrollPulse {
+  0% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.3; transform: scaleY(0.6); }
+  100% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ═══════════════════════════════════════════
+   TRUST STRIP / SOCIAL PROOF
+   ═══════════════════════════════════════════ */
+.trust-strip {
+  padding: 60px 48px;
+  border-top: 1px solid rgba(124, 58, 237, 0.08);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.trust-strip-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 32px;
+}
+
+.trust-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 56px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.trust-logo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-muted);
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+  letter-spacing: -0.5px;
+}
+
+.trust-logo:hover {
+  opacity: 0.7;
+}
+
+/* ═══════════════════════════════════════════
+   SECTION UTILITY
+   ═══════════════════════════════════════════ */
+.section {
+  padding: 120px 48px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.section-header {
+  margin-bottom: 72px;
+}
+
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--violet-400);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.section-label::before {
+  content: '';
+  width: 24px;
+  height: 1.5px;
+  background: var(--violet-600);
+}
+
+.section-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  max-width: 700px;
+}
+
+.section-desc {
+  font-size: 17px;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-top: 20px;
+  font-weight: 300;
+}
+
+/* ═══════════════════════════════════════════
+   ABOUT / JEFF SECTION
+   ═══════════════════════════════════════════ */
+.about {
+  padding: 120px 48px;
+  position: relative;
+}
+
+.about::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse 60% 40% at 30% 50%, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.about-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-image-wrap {
+  position: relative;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4/5;
+  object-fit: cover;
+  border-radius: var(--radius-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.about-image-wrap::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  right: 12px;
+  bottom: 12px;
+  border: 1.5px solid rgba(124, 58, 237, 0.2);
+  border-radius: var(--radius-lg);
+  z-index: 0;
+}
+
+.about-image-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.about-content {
+  position: relative;
+  z-index: 1;
+}
+
+.about-name {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--violet-400);
+  margin-bottom: 16px;
+}
+
+.about-headline {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  margin-bottom: 28px;
+}
+
+.about-text {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(124, 58, 237, 0.12);
+}
+
+.stat-number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--violet-400);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ═══════════════════════════════════════════
+   SERVICES / WHAT I DO
+   ═══════════════════════════════════════════ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.service-card {
+  background: rgba(19, 17, 42, 0.6);
+  border: 1px solid rgba(124, 58, 237, 0.1);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  transition: all 0.4s var(--ease-out-expo);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--violet-600), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.service-card:hover {
+  border-color: rgba(124, 58, 237, 0.25);
+  transform: translateY(-4px);
+  background: rgba(19, 17, 42, 0.8);
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(124, 58, 237, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--violet-400);
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.service-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  letter-spacing: -0.3px;
+}
+
+.service-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  font-weight: 300;
+}
+
+/* ═══════════════════════════════════════════
+   DIFFERENTIATOR SECTION
+   ═══════════════════════════════════════════ */
+.diff-section {
+  padding: 120px 48px;
+  background: var(--surface-1);
+  position: relative;
+  overflow: hidden;
+}
+
+.diff-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 50% 60% at 80% 40%, rgba(124, 58, 237, 0.05) 0%, transparent 70%);
+}
+
+.diff-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  margin-top: 72px;
+}
+
+.diff-col-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1.5px solid rgba(124, 58, 237, 0.2);
+}
+
+.diff-col-title.positive {
+  color: var(--violet-400);
+  border-bottom-color: var(--violet-600);
+}
+
+.diff-col-title.contrast {
+  color: var(--text-muted);
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+
+.diff-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.diff-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.diff-icon.check {
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--violet-400);
+  font-size: 14px;
+}
+
+.diff-icon.x {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.diff-item-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.diff-item-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+/* ═══════════════════════════════════════════
+   ROLES SECTION
+   ═══════════════════════════════════════════ */
+.roles-section {
+  padding: 120px 48px;
+  position: relative;
+}
+
+.roles-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.roles-marquee-wrap {
+  overflow: hidden;
+  margin-top: 48px;
+  mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 10%, black 90%, transparent);
+}
+
+.roles-marquee {
+  display: flex;
+  gap: 16px;
+  animation: marquee 40s linear infinite;
+  width: max-content;
+}
+
+.roles-marquee:nth-child(2) {
+  animation-direction: reverse;
+  margin-top: 16px;
+  animation-duration: 35s;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.role-tag {
+  padding: 10px 24px;
+  background: rgba(19, 17, 42, 0.6);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: 100px;
+  font-size: 13px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  font-weight: 400;
+}
+
+.role-tag:hover {
+  border-color: var(--violet-500);
+  color: var(--text-primary);
+  background: rgba(124, 58, 237, 0.08);
+}
+
+/* ═══════════════════════════════════════════
+   TESTIMONIAL / QUOTE
+   ═══════════════════════════════════════════ */
+.quote-section {
+  padding: 120px 48px;
+  text-align: center;
+  position: relative;
+  background: var(--surface-1);
+}
+
+.quote-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.08), transparent 60%);
+}
+
+.quote-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-mark {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 120px;
+  color: var(--violet-600);
+  opacity: 0.2;
+  line-height: 0.8;
+  margin-bottom: -20px;
+}
+
+.quote-text {
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 300;
+  line-height: 1.5;
+  color: var(--text-primary);
+  font-style: italic;
+}
+
+.quote-text strong {
+  color: var(--violet-300);
+  font-weight: 600;
+}
+
+/* ═══════════════════════════════════════════
+   CONTACT SECTION
+   ═══════════════════════════════════════════ */
+.contact-section {
+  padding: 120px 48px;
+  position: relative;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 50% at 30% 70%, rgba(124, 58, 237, 0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 70% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+}
+
+.contact-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.form-input,
+.form-textarea {
+  background: rgba(19, 17, 42, 0.6);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--violet-500);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-info-item {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  align-items: flex-start;
+}
+
+.contact-info-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(124, 58, 237, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-info-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--violet-400);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.contact-info-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}
+
+.contact-info-value {
+  font-size: 16px;
+  color: var(--text-primary);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.contact-info-value a {
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info-value a:hover {
+  color: var(--violet-400);
+}
+
+/* ═══════════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════════ */
+.footer {
+  padding: 40px 48px;
+  border-top: 1px solid rgba(124, 58, 237, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.footer-text {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.footer-reg {
+  font-size: 12px;
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .about-inner { grid-template-columns: 1fr; gap: 48px; }
+  .about-image-wrap { max-width: 400px; margin: 0 auto; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .diff-grid { grid-template-columns: 1fr; gap: 48px; }
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+}
+
+@media (max-width: 768px) {
+  .nav { padding: 16px 24px; }
+  .nav.scrolled { padding: 12px 24px; }
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .nav-mobile-toggle { display: block; }
+  
+  .hero { padding: 100px 24px 60px; }
+  .section { padding: 80px 24px; }
+  .about { padding: 80px 24px; }
+  .diff-section { padding: 80px 24px; }
+  .roles-section { padding: 80px 24px; }
+  .contact-section { padding: 80px 24px; }
+  
+  .services-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .stat-number { font-size: 28px; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-actions { flex-direction: column; }
+  
+  .footer { flex-direction: column; gap: 12px; text-align: center; }
+}
+
+/* ═══════════════════════════════════════════
+   CONVERGE ANIMATED ICON (HERO)
+   ═══════════════════════════════════════════ */
+.converge-icon {
+  display: inline-block;
+  position: relative;
+}
+
+.converge-icon svg {
+  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.3));
+}
+
+/* Floating particles */
+.particle-field {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--violet-500);
+  opacity: 0;
+  animation: floatParticle 6s ease-in-out infinite;
+}
+
+@keyframes floatParticle {
+  0% { opacity: 0; transform: translateY(0) scale(0); }
+  20% { opacity: 0.6; transform: translateY(-20px) scale(1); }
+  80% { opacity: 0.3; transform: translateY(-80px) scale(0.8); }
+  100% { opacity: 0; transform: translateY(-120px) scale(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAVIGATION ═══════════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">
+    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="navG" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#7c3aed"/>
+          <stop offset="100%" stop-color="#c4b5fd"/>
+        </linearGradient>
+      </defs>
+      <g opacity="0.3"><ellipse cx="6" cy="12" rx="2.5" ry="2.5" fill="#a78bfa"/><rect x="4" y="15" width="5" height="10" rx="2.5" fill="#a78bfa"/></g>
+      <g opacity="0.5"><ellipse cx="13" cy="8" rx="3" ry="3" fill="#8b5cf6"/><rect x="10" y="12" width="6" height="12" rx="3" fill="#8b5cf6"/></g>
+      <g opacity="0.85"><ellipse cx="21" cy="6" rx="3.5" ry="3.5" fill="url(#navG)"/><rect x="17.5" y="10" width="7" height="14" rx="3.5" fill="url(#navG)"/></g>
+      <g opacity="0.5"><ellipse cx="29" cy="10" rx="2.8" ry="2.8" fill="#c4b5fd"/><rect x="26.5" y="13.5" width="5" height="11" rx="2.5" fill="#c4b5fd" opacity="0.6"/></g>
+      <path d="M4,30 C4,25 32,25 32,30" stroke="url(#navG)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="nav-logo-text">Talent Scale</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Expertise</a></li>
+    <li><a href="#roles">Roles</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk</a>
+  <button class="nav-mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="hero">
+  <div class="particle-field">
+    <div class="particle" style="left:15%;top:60%;animation-delay:0s"></div>
+    <div class="particle" style="left:25%;top:70%;animation-delay:1.2s"></div>
+    <div class="particle" style="left:55%;top:55%;animation-delay:2.5s"></div>
+    <div class="particle" style="left:75%;top:65%;animation-delay:0.8s"></div>
+    <div class="particle" style="left:85%;top:75%;animation-delay:3.2s"></div>
+    <div class="particle" style="left:40%;top:80%;animation-delay:1.8s"></div>
+    <div class="particle" style="left:65%;top:45%;animation-delay:4s"></div>
+    <div class="particle" style="left:35%;top:50%;animation-delay:2s;background:var(--violet-300)"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-mark converge-icon">
+      <svg width="80" height="80" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="heroG" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7c3aed"/>
+            <stop offset="100%" stop-color="#c4b5fd"/>
+          </linearGradient>
+        </defs>
+        <g opacity="0.3"><ellipse cx="8" cy="22" rx="4" ry="4" fill="#a78bfa"/><rect x="5" y="27" width="6" height="16" rx="3" fill="#a78bfa"/></g>
+        <g opacity="0.5"><ellipse cx="18" cy="14" rx="4.5" ry="4.5" fill="#8b5cf6"/><rect x="14" y="20" width="8" height="18" rx="4" fill="#8b5cf6"/></g>
+        <g opacity="0.9"><ellipse cx="30" cy="8" rx="5.5" ry="5.5" fill="url(#heroG)"/><rect x="25" y="15" width="10" height="22" rx="5" fill="url(#heroG)"/></g>
+        <g opacity="0.5"><ellipse cx="42" cy="14" rx="4.5" ry="4.5" fill="#c4b5fd"/><rect x="38" y="20" width="8" height="18" rx="4" fill="#c4b5fd" opacity="0.6"/></g>
+        <g opacity="0.3"><ellipse cx="52" cy="22" rx="4" ry="4" fill="#a78bfa"/><rect x="49" y="27" width="6" height="16" rx="3" fill="#a78bfa"/></g>
+        <path d="M5,48 C5,38 55,38 55,48" stroke="url(#heroG)" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M12,52 C12,44 48,44 48,52" stroke="#a78bfa" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.3"/>
+        <circle cx="30" cy="54" r="2.5" fill="#c4b5fd" opacity="0.5"/>
+      </svg>
+    </div>
+
+    <div class="hero-badge">Executive Recruitment</div>
+
+    <h1>
+      Helping Disruptors Hire<br>
+      <span class="gradient-text">Incredible Talent</span>
+    </h1>
+
+    <p class="hero-sub">
+      20+ years of precision headhunting across Marketing, Product, Sales & Technology. 
+      I find the leaders who transform your business.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start a Conversation</a>
+      <a href="#about" class="btn-secondary">Meet Jeff</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════════ TRUST STRIP ═══════════ -->
+<div class="trust-strip reveal">
+  <div class="trust-strip-label">Trusted by innovative companies</div>
+  <div class="trust-logos">
+    <span class="trust-logo">Deliveroo</span>
+    <span class="trust-logo">Bloom & Wild</span>
+    <span class="trust-logo">Starling Bank</span>
+    <span class="trust-logo">Wise</span>
+    <span class="trust-logo">Depop</span>
+    <span class="trust-logo">GoCardless</span>
+    <span class="trust-logo">Monzo</span>
+  </div>
+</div>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section class="about" id="about">
+  <div class="about-inner">
+    <div class="about-image-wrap reveal-left">
+      <img src="jeffh.webp" alt="Jeff Hardie — Founder, Talent Scale" class="about-image">
+    </div>
+    <div class="about-content">
+      <div class="about-name reveal">Jeff Hardie</div>
+      <h2 class="about-headline reveal">I love people. I love solving problems for companies.</h2>
+      <p class="about-text reveal">
+        I'm a highly experienced and very connected recruitment director with 20+ years of commercial expertise throughout the UK and Europe. I've built teams multiple times across Start-Ups and Scale-Ups in Health, Finance, Media, Technology, and SaaS.
+      </p>
+      <p class="about-text reveal">
+        I've advised founders and executive teams extensively on role positioning, organisational design and market insight. I have extensive experience working with investors across VC, Private Equity and countless founders of tech companies.
+      </p>
+      <p class="about-text reveal">
+        My reputation is everything. The buck stops with me and I can be checked out.
+      </p>
+
+      <div class="about-stats stagger-children">
+        <div class="reveal">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Years of<br>Experience</div>
+        </div>
+        <div class="reveal">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Placements<br>Made</div>
+        </div>
+        <div class="reveal">
+          <div class="stat-number">100+</div>
+          <div class="stat-label">Companies<br>Scaled</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section class="section" id="services">
+  <div class="section-header">
+    <div class="section-label reveal">What I Do</div>
+    <h2 class="section-title reveal">Strategic recruitment<br>for ambitious companies</h2>
+    <p class="section-desc reveal">
+      I specialise in hiring key leadership roles, helping founders and their teams on critical strategic hires that drive real business impact.
+    </p>
+  </div>
+
+  <div class="services-grid stagger-children">
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+      </div>
+      <h3 class="service-title">Executive Search</h3>
+      <p class="service-desc">Targeted, confidential headhunting for C-suite and senior leadership positions. I find the people who aren't actively looking but are the perfect fit.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <h3 class="service-title">Team Scaling</h3>
+      <p class="service-desc">End-to-end support for founders building out leadership teams. From org design to candidate mapping to final placement.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      </div>
+      <h3 class="service-title">Market Insight</h3>
+      <p class="service-desc">Strategic advisory on role positioning, compensation benchmarking, and organisational design. I've got my finger on the pulse.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <h3 class="service-title">Quality, Not Volume</h3>
+      <p class="service-desc">I'm not a mass volume recruiter. Clients engage me for targeted, quality hiring plans. Rock solid delivery is at the heart of what I do.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <h3 class="service-title">Proven Track Record</h3>
+      <p class="service-desc">An outstanding reputation built on delivery, not promises. My record speaks for itself across hundreds of successful placements.</p>
+    </div>
+
+    <div class="service-card reveal">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <h3 class="service-title">Investor Connected</h3>
+      <p class="service-desc">Deep relationships across VC, Private Equity, and the founder ecosystem. I understand the unique demands of investor-backed growth.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ DIFFERENTIATOR ═══════════ -->
+<section class="diff-section">
+  <div class="diff-inner">
+    <div class="section-header">
+      <div class="section-label reveal">The Difference</div>
+      <h2 class="section-title reveal">What I am —<br>and what I'm not</h2>
+    </div>
+
+    <div class="diff-grid">
+      <div>
+        <div class="diff-col-title positive reveal">What You Get</div>
+        
+        <div class="diff-item reveal">
+          <div class="diff-icon check">✓</div>
+          <div>
+            <div class="diff-item-title">20+ Years Experience</div>
+            <div class="diff-item-desc">Outstanding reputation with an enviable client and candidate network built over two decades.</div>
+          </div>
+        </div>
+
+        <div class="diff-item reveal">
+          <div class="diff-icon check">✓</div>
+          <div>
+            <div class="diff-item-title">Deep Industry Expertise</div>
+            <div class="diff-item-desc">Multiple sector and channel experience across Marketing, Product, Sales, Technology, and more.</div>
+          </div>
+        </div>
+
+        <div class="diff-item reveal">
+          <div class="diff-icon check">✓</div>
+          <div>
+            <div class="diff-item-title">Honest & Engaging</div>
+            <div class="diff-item-desc">I listen. I'm upfront about what I can and can't do. I'm an expert in my core areas. I'm fun. I deliver.</div>
+          </div>
+        </div>
+
+        <div class="diff-item reveal">
+          <div class="diff-icon check">✓</div>
+          <div>
+            <div class="diff-item-title">Proven, Checkable Results</div>
+            <div class="diff-item-desc">My record speaks for itself. My reputation is everything — and it can be verified.</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="diff-col-title contrast reveal">What I'm Not</div>
+        
+        <div class="diff-item reveal">
+          <div class="diff-icon x">✗</div>
+          <div>
+            <div class="diff-item-title" style="color:var(--text-muted)">Mass Volume Recruiter</div>
+            <div class="diff-item-desc">I haven't built this business based on targets — but on rock solid delivery.</div>
+          </div>
+        </div>
+
+        <div class="diff-item reveal">
+          <div class="diff-icon x">✗</div>
+          <div>
+            <div class="diff-item-title" style="color:var(--text-muted)">Arrogant or Full of Ego</div>
+            <div class="diff-item-desc">No corporate bluster. Just honest, direct conversations about what matters.</div>
+          </div>
+        </div>
+
+        <div class="diff-item reveal">
+          <div class="diff-icon x">✗</div>
+          <div>
+            <div class="diff-item-title" style="color:var(--text-muted)">Unable to Demonstrate Success</div>
+            <div class="diff-item-desc">The buck stops with me. Check me out — see the client portfolio and ask around.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ROLES ═══════════ -->
+<section class="roles-section" id="roles">
+  <div class="roles-inner">
+    <div class="section-header">
+      <div class="section-label reveal">Roles I Cover</div>
+      <h2 class="section-title reveal">From C-Suite to<br>senior leadership</h2>
+      <p class="section-desc reveal">
+        I cover all types of roles for organisations large and small. Here's a snapshot of the searches I've conducted.
+      </p>
+    </div>
+
+    <div class="roles-marquee-wrap">
+      <div class="roles-marquee">
+        <span class="role-tag">Chief Marketing Officer</span>
+        <span class="role-tag">Chief Revenue Officer</span>
+        <span class="role-tag">Chief Commercial Officer</span>
+        <span class="role-tag">Marketing Director</span>
+        <span class="role-tag">Commercial Director</span>
+        <span class="role-tag">Product Director</span>
+        <span class="role-tag">Sales Director</span>
+        <span class="role-tag">Director of Growth</span>
+        <span class="role-tag">Managing Director</span>
+        <span class="role-tag">Digital Marketing Director</span>
+        <span class="role-tag">Head of Growth</span>
+        <span class="role-tag">Head of Product</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="role-tag">Chief Marketing Officer</span>
+        <span class="role-tag">Chief Revenue Officer</span>
+        <span class="role-tag">Chief Commercial Officer</span>
+        <span class="role-tag">Marketing Director</span>
+        <span class="role-tag">Commercial Director</span>
+        <span class="role-tag">Product Director</span>
+        <span class="role-tag">Sales Director</span>
+        <span class="role-tag">Director of Growth</span>
+        <span class="role-tag">Managing Director</span>
+        <span class="role-tag">Digital Marketing Director</span>
+        <span class="role-tag">Head of Growth</span>
+        <span class="role-tag">Head of Product</span>
+      </div>
+      <div class="roles-marquee">
+        <span class="role-tag">Head of CRM</span>
+        <span class="role-tag">Head of Data Science</span>
+        <span class="role-tag">Head of User Acquisition</span>
+        <span class="role-tag">Head of Search</span>
+        <span class="role-tag">Head of User Experience</span>
+        <span class="role-tag">Head of Performance</span>
+        <span class="role-tag">Head of Brand Marketing</span>
+        <span class="role-tag">Head of PR & Communications</span>
+        <span class="role-tag">Head of Sales</span>
+        <span class="role-tag">Head of Content</span>
+        <span class="role-tag">Head of Direct Marketing</span>
+        <span class="role-tag">Sales Manager</span>
+        <!-- Duplicate -->
+        <span class="role-tag">Head of CRM</span>
+        <span class="role-tag">Head of Data Science</span>
+        <span class="role-tag">Head of User Acquisition</span>
+        <span class="role-tag">Head of Search</span>
+        <span class="role-tag">Head of User Experience</span>
+        <span class="role-tag">Head of Performance</span>
+        <span class="role-tag">Head of Brand Marketing</span>
+        <span class="role-tag">Head of PR & Communications</span>
+        <span class="role-tag">Head of Sales</span>
+        <span class="role-tag">Head of Content</span>
+        <span class="role-tag">Head of Direct Marketing</span>
+        <span class="role-tag">Sales Manager</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ QUOTE ═══════════ -->
+<section class="quote-section">
+  <div class="quote-inner reveal-scale">
+    <div class="quote-mark">"</div>
+    <p class="quote-text">
+      I have my finger on the pulse and I am <strong>connected</strong>. I don't just fill roles — I find the people who will <strong>transform your business</strong>.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+    <div>
+      <div class="section-header">
+        <div class="section-label reveal">Get In Touch</div>
+        <h2 class="section-title reveal">Let's work<br>together</h2>
+        <p class="section-desc reveal">
+          If I can help you or your company find exceptional talent, drop me a line and let's talk.
+        </p>
+      </div>
+
+      <div class="contact-info" style="margin-top: 48px;">
+        <div class="contact-info-item reveal">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Address</div>
+            <div class="contact-info-value">4th Floor, Holden House<br>57 Rathbone Place, London W1T 1JU</div>
+          </div>
+        </div>
+
+        <div class="contact-info-item reveal">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Phone</div>
+            <div class="contact-info-value">
+              <a href="tel:+448458888144">+44 (0) 845 888 8144</a><br>
+              <a href="tel:+447801149327">+44 (0) 7801 149 327</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-info-item reveal">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">Email</div>
+            <div class="contact-info-value"><a href="mailto:jeff@talentscale.io">jeff@talentscale.io</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <form class="contact-form reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-input" placeholder="Your first name">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-input" placeholder="Your last name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Company</label>
+          <input type="text" class="form-input" placeholder="Your company name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-textarea" placeholder="Tell me about the role you're looking to fill..."></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 8px;">
+          Send Message
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="footer">
+  <span class="footer-text">© 2025 Talent Scale. All rights reserved.</span>
+  <span class="footer-reg">Reg: 12217924</span>
+</footer>
+
+<!-- ═══════════ SCRIPTS ═══════════ -->
+<script>
+// Intersection Observer for scroll reveals
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -60px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+  observer.observe(el);
+});
+
+// Nav scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 50) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+</script>
+
+</body>
+</html>

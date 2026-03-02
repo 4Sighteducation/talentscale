@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talent Scale — People & Recruitment Concepts</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,700;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #08080c;
+    --card: #111118;
+    --border: #1e1e2a;
+    --text: #e8e8ef;
+    --muted: #6a6a7e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 60px 40px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .header h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .header p {
+    font-size: 12px;
+    color: #44445a;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 28px;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), border-color 0.4s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  }
+
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: #2a2a3a;
+  }
+
+  .card-label {
+    font-size: 10px;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 700;
+  }
+
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .logo-dark {
+    background: #06060a;
+    border-radius: 14px;
+    padding: 40px 48px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #14141e;
+  }
+
+  .logo-light {
+    background: #f8f8fa;
+    border-radius: 14px;
+    padding: 40px 48px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid #e8e8ec;
+  }
+
+  .color-swatches {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .swatch {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255,255,255,0.08);
+  }
+
+  .swatch-label {
+    font-size: 10px;
+    color: #44445a;
+    margin-left: 8px;
+    font-family: 'DM Sans', monospace;
+    letter-spacing: 0.5px;
+  }
+
+  svg text {
+    font-family: 'Outfit', sans-serif;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Talent Scale</h1>
+  <p>People & recruitment focused — Vol. 3</p>
+</div>
+
+<div class="grid">
+
+  <!-- OPTION 1: Connected People Network — Electric Blue -->
+  <div class="card">
+    <span class="card-label">Option 1 — Network</span>
+    <div class="logo-container">
+      <div class="logo-dark">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="n1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3b82f6"/>
+              <stop offset="100%" stop-color="#93c5fd"/>
+            </linearGradient>
+          </defs>
+          <!-- Connection lines first (behind nodes) -->
+          <line x1="16" y1="24" x2="34" y2="38" stroke="#3b82f6" stroke-width="1" opacity="0.3"/>
+          <line x1="34" y1="38" x2="52" y2="20" stroke="#3b82f6" stroke-width="1" opacity="0.3"/>
+          <line x1="34" y1="38" x2="16" y2="54" stroke="#3b82f6" stroke-width="1" opacity="0.25"/>
+          <line x1="34" y1="38" x2="52" y2="52" stroke="#3b82f6" stroke-width="1" opacity="0.25"/>
+          <line x1="16" y1="24" x2="52" y2="20" stroke="#93c5fd" stroke-width="0.5" opacity="0.15"/>
+          <line x1="16" y1="54" x2="52" y2="52" stroke="#93c5fd" stroke-width="0.5" opacity="0.15"/>
+          <!-- Abstract person - centre (larger, focal) -->
+          <circle cx="34" cy="32" r="5" fill="url(#n1)"/>
+          <path d="M26,44 C26,38 42,38 42,44" stroke="url(#n1)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <!-- Abstract person - top left -->
+          <circle cx="16" cy="18" r="3.5" fill="#3b82f6" opacity="0.6"/>
+          <path d="M10,28 C10,24 22,24 22,28" stroke="#3b82f6" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <!-- Abstract person - top right -->
+          <circle cx="52" cy="14" r="3.5" fill="#93c5fd" opacity="0.5"/>
+          <path d="M46,24 C46,20 58,20 58,24" stroke="#93c5fd" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <!-- Abstract person - bottom left -->
+          <circle cx="16" cy="50" r="3" fill="#3b82f6" opacity="0.4"/>
+          <path d="M10,58 C10,55 22,55 22,58" stroke="#3b82f6" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.4"/>
+          <!-- Abstract person - bottom right -->
+          <circle cx="52" cy="48" r="3" fill="#93c5fd" opacity="0.35"/>
+          <path d="M46,56 C46,53 58,53 58,56" stroke="#93c5fd" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.35"/>
+          <text x="72" y="34" font-size="26" font-weight="700" fill="#eff6ff" letter-spacing="1">talent</text>
+          <text x="72" y="58" font-size="18" font-weight="300" fill="#60a5fa" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+      <div class="logo-light">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="n1l" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#1d4ed8"/>
+              <stop offset="100%" stop-color="#3b82f6"/>
+            </linearGradient>
+          </defs>
+          <line x1="16" y1="24" x2="34" y2="38" stroke="#1d4ed8" stroke-width="1" opacity="0.25"/>
+          <line x1="34" y1="38" x2="52" y2="20" stroke="#1d4ed8" stroke-width="1" opacity="0.25"/>
+          <line x1="34" y1="38" x2="16" y2="54" stroke="#1d4ed8" stroke-width="1" opacity="0.2"/>
+          <line x1="34" y1="38" x2="52" y2="52" stroke="#1d4ed8" stroke-width="1" opacity="0.2"/>
+          <line x1="16" y1="24" x2="52" y2="20" stroke="#3b82f6" stroke-width="0.5" opacity="0.12"/>
+          <line x1="16" y1="54" x2="52" y2="52" stroke="#3b82f6" stroke-width="0.5" opacity="0.12"/>
+          <circle cx="34" cy="32" r="5" fill="url(#n1l)"/>
+          <path d="M26,44 C26,38 42,38 42,44" stroke="url(#n1l)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="16" cy="18" r="3.5" fill="#1d4ed8" opacity="0.55"/>
+          <path d="M10,28 C10,24 22,24 22,28" stroke="#1d4ed8" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.55"/>
+          <circle cx="52" cy="14" r="3.5" fill="#3b82f6" opacity="0.45"/>
+          <path d="M46,24 C46,20 58,20 58,24" stroke="#3b82f6" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.45"/>
+          <circle cx="16" cy="50" r="3" fill="#1d4ed8" opacity="0.35"/>
+          <path d="M10,58 C10,55 22,55 22,58" stroke="#1d4ed8" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="52" cy="48" r="3" fill="#3b82f6" opacity="0.3"/>
+          <path d="M46,56 C46,53 58,53 58,56" stroke="#3b82f6" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.3"/>
+          <text x="72" y="34" font-size="26" font-weight="700" fill="#0c1629" letter-spacing="1">talent</text>
+          <text x="72" y="58" font-size="18" font-weight="300" fill="#1d4ed8" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+    </div>
+    <div class="color-swatches">
+      <div class="swatch" style="background:#3b82f6"></div>
+      <div class="swatch" style="background:#93c5fd"></div>
+      <div class="swatch" style="background:#1e3a5f"></div>
+      <span class="swatch-label">#3b82f6 · #93c5fd</span>
+    </div>
+  </div>
+
+  <!-- OPTION 2: Abstract Crowd / Convergence — Warm Violet -->
+  <div class="card">
+    <span class="card-label">Option 2 — Converge</span>
+    <div class="logo-container">
+      <div class="logo-dark">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="c1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#7c3aed"/>
+              <stop offset="100%" stop-color="#c4b5fd"/>
+            </linearGradient>
+          </defs>
+          <!-- Overlapping abstract figures converging to a point -->
+          <!-- Figure silhouettes as pill/capsule shapes radiating inward -->
+          <g opacity="0.3">
+            <ellipse cx="8" cy="28" rx="3" ry="3" fill="#a78bfa"/>
+            <rect x="5" y="32" width="6" height="14" rx="3" fill="#a78bfa"/>
+          </g>
+          <g opacity="0.45">
+            <ellipse cx="18" cy="18" rx="3.5" ry="3.5" fill="#8b5cf6"/>
+            <rect x="14.5" y="22" width="7" height="16" rx="3.5" fill="#8b5cf6"/>
+          </g>
+          <g opacity="0.65">
+            <ellipse cx="30" cy="12" rx="4" ry="4" fill="url(#c1)"/>
+            <rect x="26" y="17" width="8" height="18" rx="4" fill="url(#c1)"/>
+          </g>
+          <g opacity="0.85">
+            <ellipse cx="42" cy="18" rx="3.5" ry="3.5" fill="#c4b5fd"/>
+            <rect x="38.5" y="22" width="7" height="16" rx="3.5" fill="#c4b5fd" opacity="0.7"/>
+          </g>
+          <g opacity="0.35">
+            <ellipse cx="52" cy="28" rx="3" ry="3" fill="#a78bfa"/>
+            <rect x="49" y="32" width="6" height="14" rx="3" fill="#a78bfa"/>
+          </g>
+          <!-- Connecting arc underneath - the "scale" -->
+          <path d="M6,52 C6,42 54,42 54,52" stroke="url(#c1)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M14,56 C14,48 46,48 46,56" stroke="#a78bfa" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.3"/>
+          <!-- Focus dot -->
+          <circle cx="30" cy="60" r="2" fill="#c4b5fd" opacity="0.6"/>
+          <text x="68" y="34" font-size="26" font-weight="700" fill="#f5f3ff" letter-spacing="1">talent</text>
+          <text x="68" y="58" font-size="18" font-weight="300" fill="#a78bfa" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+      <div class="logo-light">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="c1l" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#6d28d9"/>
+              <stop offset="100%" stop-color="#7c3aed"/>
+            </linearGradient>
+          </defs>
+          <g opacity="0.25">
+            <ellipse cx="8" cy="28" rx="3" ry="3" fill="#7c3aed"/>
+            <rect x="5" y="32" width="6" height="14" rx="3" fill="#7c3aed"/>
+          </g>
+          <g opacity="0.4">
+            <ellipse cx="18" cy="18" rx="3.5" ry="3.5" fill="#6d28d9"/>
+            <rect x="14.5" y="22" width="7" height="16" rx="3.5" fill="#6d28d9"/>
+          </g>
+          <g opacity="0.65">
+            <ellipse cx="30" cy="12" rx="4" ry="4" fill="url(#c1l)"/>
+            <rect x="26" y="17" width="8" height="18" rx="4" fill="url(#c1l)"/>
+          </g>
+          <g opacity="0.5">
+            <ellipse cx="42" cy="18" rx="3.5" ry="3.5" fill="#7c3aed"/>
+            <rect x="38.5" y="22" width="7" height="16" rx="3.5" fill="#7c3aed" opacity="0.6"/>
+          </g>
+          <g opacity="0.25">
+            <ellipse cx="52" cy="28" rx="3" ry="3" fill="#7c3aed"/>
+            <rect x="49" y="32" width="6" height="14" rx="3" fill="#7c3aed"/>
+          </g>
+          <path d="M6,52 C6,42 54,42 54,52" stroke="url(#c1l)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          <path d="M14,56 C14,48 46,48 46,56" stroke="#7c3aed" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.25"/>
+          <circle cx="30" cy="60" r="2" fill="#6d28d9" opacity="0.5"/>
+          <text x="68" y="34" font-size="26" font-weight="700" fill="#1a0a2e" letter-spacing="1">talent</text>
+          <text x="68" y="58" font-size="18" font-weight="300" fill="#6d28d9" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+    </div>
+    <div class="color-swatches">
+      <div class="swatch" style="background:#7c3aed"></div>
+      <div class="swatch" style="background:#c4b5fd"></div>
+      <div class="swatch" style="background:#2e1065"></div>
+      <span class="swatch-label">#7c3aed · #c4b5fd</span>
+    </div>
+  </div>
+
+  <!-- OPTION 3: Handshake / Connection — Teal & Coral -->
+  <div class="card">
+    <span class="card-label">Option 3 — Synapse</span>
+    <div class="logo-container">
+      <div class="logo-dark">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="s1" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#0d9488"/>
+              <stop offset="100%" stop-color="#f97316"/>
+            </linearGradient>
+          </defs>
+          <!-- Two abstract figures reaching toward each other -->
+          <!-- Left figure - teal -->
+          <circle cx="14" cy="24" r="5" fill="#0d9488"/>
+          <path d="M14,30 L14,50" stroke="#0d9488" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M14,36 L28,30" stroke="#0d9488" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14,46 L8,56" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <path d="M14,46 L20,56" stroke="#0d9488" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <!-- Right figure - coral -->
+          <circle cx="48" cy="24" r="5" fill="#f97316"/>
+          <path d="M48,30 L48,50" stroke="#f97316" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M48,36 L34,30" stroke="#f97316" stroke-width="2" stroke-linecap="round"/>
+          <path d="M48,46 L42,56" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <path d="M48,46 L54,56" stroke="#f97316" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+          <!-- Connection spark between reaching hands -->
+          <circle cx="31" cy="29" r="2.5" fill="url(#s1)" opacity="0.9"/>
+          <circle cx="31" cy="29" r="5" fill="none" stroke="url(#s1)" stroke-width="0.5" opacity="0.3"/>
+          <circle cx="31" cy="29" r="8" fill="none" stroke="url(#s1)" stroke-width="0.3" opacity="0.15"/>
+          <text x="68" y="34" font-size="26" font-weight="700" fill="#f0fdfa" letter-spacing="1">talent</text>
+          <text x="68" y="58" font-size="18" font-weight="300" fill="#5eead4" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+      <div class="logo-light">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="s1l" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#0f766e"/>
+              <stop offset="100%" stop-color="#ea580c"/>
+            </linearGradient>
+          </defs>
+          <circle cx="14" cy="24" r="5" fill="#0f766e"/>
+          <path d="M14,30 L14,50" stroke="#0f766e" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M14,36 L28,30" stroke="#0f766e" stroke-width="2" stroke-linecap="round"/>
+          <path d="M14,46 L8,56" stroke="#0f766e" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <path d="M14,46 L20,56" stroke="#0f766e" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <circle cx="48" cy="24" r="5" fill="#ea580c"/>
+          <path d="M48,30 L48,50" stroke="#ea580c" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M48,36 L34,30" stroke="#ea580c" stroke-width="2" stroke-linecap="round"/>
+          <path d="M48,46 L42,56" stroke="#ea580c" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <path d="M48,46 L54,56" stroke="#ea580c" stroke-width="1.5" stroke-linecap="round" opacity="0.45"/>
+          <circle cx="31" cy="29" r="2.5" fill="url(#s1l)" opacity="0.85"/>
+          <circle cx="31" cy="29" r="5" fill="none" stroke="url(#s1l)" stroke-width="0.5" opacity="0.25"/>
+          <circle cx="31" cy="29" r="8" fill="none" stroke="url(#s1l)" stroke-width="0.3" opacity="0.1"/>
+          <text x="68" y="34" font-size="26" font-weight="700" fill="#0a1210" letter-spacing="1">talent</text>
+          <text x="68" y="58" font-size="18" font-weight="300" fill="#0f766e" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+    </div>
+    <div class="color-swatches">
+      <div class="swatch" style="background:#0d9488"></div>
+      <div class="swatch" style="background:#f97316"></div>
+      <div class="swatch" style="background:#042f2e"></div>
+      <span class="swatch-label">#0d9488 · #f97316</span>
+    </div>
+  </div>
+
+  <!-- OPTION 4: Fingerprint / Identity — Rose & Blush -->
+  <div class="card">
+    <span class="card-label">Option 4 — Identity</span>
+    <div class="logo-container">
+      <div class="logo-dark">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="id1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#e11d48"/>
+              <stop offset="100%" stop-color="#fda4af"/>
+            </linearGradient>
+          </defs>
+          <!-- Abstract fingerprint / unique identity mark -->
+          <path d="M20,58 C8,58 4,46 4,38 C4,22 14,12 30,12 C46,12 56,22 56,38" stroke="url(#id1)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.3"/>
+          <path d="M24,54 C14,54 10,46 10,38 C10,26 18,18 30,18 C42,18 50,26 50,38" stroke="url(#id1)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.45"/>
+          <path d="M28,50 C20,50 16,44 16,38 C16,30 22,24 30,24 C38,24 44,30 44,38" stroke="url(#id1)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.65"/>
+          <path d="M32,46 C26,46 22,42 22,38 C22,33 26,30 30,30 C34,30 38,33 38,38" stroke="url(#id1)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <!-- Core -->
+          <circle cx="30" cy="38" r="2.5" fill="#fda4af"/>
+          <!-- Small person silhouette emerging from center -->
+          <circle cx="30" cy="34" r="3" fill="none" stroke="#fda4af" stroke-width="1" opacity="0.6"/>
+          <text x="68" y="34" font-size="26" font-weight="700" fill="#fff1f2" letter-spacing="1">talent</text>
+          <text x="68" y="58" font-size="18" font-weight="300" fill="#fb7185" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+      <div class="logo-light">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="id1l" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#be123c"/>
+              <stop offset="100%" stop-color="#e11d48"/>
+            </linearGradient>
+          </defs>
+          <path d="M20,58 C8,58 4,46 4,38 C4,22 14,12 30,12 C46,12 56,22 56,38" stroke="url(#id1l)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.2"/>
+          <path d="M24,54 C14,54 10,46 10,38 C10,26 18,18 30,18 C42,18 50,26 50,38" stroke="url(#id1l)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.35"/>
+          <path d="M28,50 C20,50 16,44 16,38 C16,30 22,24 30,24 C38,24 44,30 44,38" stroke="url(#id1l)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.55"/>
+          <path d="M32,46 C26,46 22,42 22,38 C22,33 26,30 30,30 C34,30 38,33 38,38" stroke="url(#id1l)" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.75"/>
+          <circle cx="30" cy="38" r="2.5" fill="#be123c"/>
+          <circle cx="30" cy="34" r="3" fill="none" stroke="#be123c" stroke-width="1" opacity="0.5"/>
+          <text x="68" y="34" font-size="26" font-weight="700" fill="#1a0810" letter-spacing="1">talent</text>
+          <text x="68" y="58" font-size="18" font-weight="300" fill="#be123c" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+    </div>
+    <div class="color-swatches">
+      <div class="swatch" style="background:#e11d48"></div>
+      <div class="swatch" style="background:#fda4af"></div>
+      <div class="swatch" style="background:#4c0519"></div>
+      <span class="swatch-label">#e11d48 · #fda4af</span>
+    </div>
+  </div>
+
+  <!-- OPTION 5: Magnifying glass + person — Midnight & Gold -->
+  <div class="card">
+    <span class="card-label">Option 5 — Discover</span>
+    <div class="logo-container">
+      <div class="logo-dark">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="d1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#eab308"/>
+              <stop offset="100%" stop-color="#fde68a"/>
+            </linearGradient>
+          </defs>
+          <!-- Elegant search lens -->
+          <circle cx="26" cy="30" r="18" fill="none" stroke="url(#d1)" stroke-width="2.5"/>
+          <!-- Handle -->
+          <line x1="39" y1="43" x2="54" y2="58" stroke="url(#d1)" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Abstract person inside lens -->
+          <circle cx="26" cy="24" r="5" fill="#fde68a" opacity="0.7"/>
+          <path d="M18,40 C18,33 34,33 34,40" stroke="#fde68a" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+          <!-- Sparkle dots -->
+          <circle cx="12" cy="16" r="1.2" fill="#fde68a" opacity="0.4"/>
+          <circle cx="40" cy="18" r="1" fill="#eab308" opacity="0.3"/>
+          <text x="66" y="34" font-size="26" font-weight="700" fill="#fefce8" letter-spacing="1">talent</text>
+          <text x="66" y="58" font-size="18" font-weight="300" fill="#facc15" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+      <div class="logo-light">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="d1l" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#a16207"/>
+              <stop offset="100%" stop-color="#ca8a04"/>
+            </linearGradient>
+          </defs>
+          <circle cx="26" cy="30" r="18" fill="none" stroke="url(#d1l)" stroke-width="2.5"/>
+          <line x1="39" y1="43" x2="54" y2="58" stroke="url(#d1l)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="26" cy="24" r="5" fill="#a16207" opacity="0.6"/>
+          <path d="M18,40 C18,33 34,33 34,40" stroke="#a16207" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <circle cx="12" cy="16" r="1.2" fill="#a16207" opacity="0.3"/>
+          <circle cx="40" cy="18" r="1" fill="#ca8a04" opacity="0.2"/>
+          <text x="66" y="34" font-size="26" font-weight="700" fill="#1a1505" letter-spacing="1">talent</text>
+          <text x="66" y="58" font-size="18" font-weight="300" fill="#a16207" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+    </div>
+    <div class="color-swatches">
+      <div class="swatch" style="background:#eab308"></div>
+      <div class="swatch" style="background:#fde68a"></div>
+      <div class="swatch" style="background:#422006"></div>
+      <span class="swatch-label">#eab308 · #fde68a</span>
+    </div>
+  </div>
+
+  <!-- OPTION 6: Puzzle Piece People — Slate & Mint -->
+  <div class="card">
+    <span class="card-label">Option 6 — Fit</span>
+    <div class="logo-container">
+      <div class="logo-dark">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="f1" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#475569"/>
+              <stop offset="100%" stop-color="#34d399"/>
+            </linearGradient>
+          </defs>
+          <!-- Left puzzle-person shape -->
+          <path d="M6,16 L22,16 C22,16 22,12 26,12 C30,12 30,16 30,16 L30,32 C30,32 34,32 34,36 C34,40 30,40 30,40 L30,60 L6,60 Z" 
+                fill="#475569" opacity="0.7"/>
+          <!-- Right puzzle-person shape (interlocking) -->
+          <path d="M30,16 L30,32 C30,32 26,32 26,36 C26,40 30,40 30,40 L30,60 L54,60 L54,44 C54,44 58,44 58,40 C58,36 54,36 54,36 L54,16 Z" 
+                fill="#34d399" opacity="0.7"/>
+          <!-- Abstract face dots on each piece -->
+          <circle cx="16" cy="30" r="1.5" fill="#94a3b8" opacity="0.6"/>
+          <circle cx="12" cy="30" r="1.5" fill="#94a3b8" opacity="0.6"/>
+          <path d="M11,35 C11,35 16,38 19,35" stroke="#94a3b8" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.4"/>
+          <circle cx="44" cy="30" r="1.5" fill="#a7f3d0" opacity="0.6"/>
+          <circle cx="40" cy="30" r="1.5" fill="#a7f3d0" opacity="0.6"/>
+          <path d="M39,35 C39,35 44,38 47,35" stroke="#a7f3d0" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.4"/>
+          <!-- Glow at connection point -->
+          <circle cx="30" cy="36" r="3" fill="url(#f1)" opacity="0.3"/>
+          <text x="70" y="34" font-size="26" font-weight="700" fill="#f1f5f9" letter-spacing="1">talent</text>
+          <text x="70" y="58" font-size="18" font-weight="300" fill="#6ee7b7" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+      <div class="logo-light">
+        <svg width="310" height="76" viewBox="0 0 310 76" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="f1l" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#334155"/>
+              <stop offset="100%" stop-color="#059669"/>
+            </linearGradient>
+          </defs>
+          <path d="M6,16 L22,16 C22,16 22,12 26,12 C30,12 30,16 30,16 L30,32 C30,32 34,32 34,36 C34,40 30,40 30,40 L30,60 L6,60 Z" 
+                fill="#334155" opacity="0.65"/>
+          <path d="M30,16 L30,32 C30,32 26,32 26,36 C26,40 30,40 30,40 L30,60 L54,60 L54,44 C54,44 58,44 58,40 C58,36 54,36 54,36 L54,16 Z" 
+                fill="#059669" opacity="0.65"/>
+          <circle cx="16" cy="30" r="1.5" fill="#475569" opacity="0.5"/>
+          <circle cx="12" cy="30" r="1.5" fill="#475569" opacity="0.5"/>
+          <path d="M11,35 C11,35 16,38 19,35" stroke="#475569" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="44" cy="30" r="1.5" fill="#047857" opacity="0.5"/>
+          <circle cx="40" cy="30" r="1.5" fill="#047857" opacity="0.5"/>
+          <path d="M39,35 C39,35 44,38 47,35" stroke="#047857" stroke-width="0.8" fill="none" stroke-linecap="round" opacity="0.35"/>
+          <circle cx="30" cy="36" r="3" fill="url(#f1l)" opacity="0.25"/>
+          <text x="70" y="34" font-size="26" font-weight="700" fill="#0f172a" letter-spacing="1">talent</text>
+          <text x="70" y="58" font-size="18" font-weight="300" fill="#047857" letter-spacing="8" opacity="0.8">scale</text>
+        </svg>
+      </div>
+    </div>
+    <div class="color-swatches">
+      <div class="swatch" style="background:#475569"></div>
+      <div class="swatch" style="background:#34d399"></div>
+      <div class="swatch" style="background:#0f172a"></div>
+      <span class="swatch-label">#475569 · #34d399</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

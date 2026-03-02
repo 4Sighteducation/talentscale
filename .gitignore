@@ -1,0 +1,19 @@
+# Next.js
+web/.next/
+web/node_modules/
+web/.vercel/
+
+# Misc
+.DS_Store
+*.pem
+*.log
+
+# Local env files
+web/.env
+web/.env*.local
+
+# Prototype files (keep for reference)
+# logoideas1-talentscale-logo.html
+# logoideas2-talentscale-abstract.html
+# logoideas3-talentscale-people.html
+# talentscale-v2.html
