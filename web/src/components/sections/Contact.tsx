@@ -2,6 +2,7 @@
 
 import { useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -70,53 +71,12 @@ export default function Contact() {
       >
         {/* Left: info */}
         <div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease }}
-            className="flex items-center gap-3 mb-5"
-            style={{
-              fontSize: '11px',
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: '#a78bfa',
-              fontWeight: 600,
-            }}
-          >
-            <span style={{ width: '24px', height: '1.5px', background: '#7c3aed', display: 'inline-block' }} />
-            Get In Touch
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease, delay: 0.08 }}
-            style={{
-              fontFamily: 'var(--font-jakarta)',
-              fontSize: 'clamp(32px, 4vw, 52px)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: '-1px',
-              color: '#f0ecff',
-              marginBottom: '20px',
-            }}
-          >
-            Let&apos;s work<br />together
-          </motion.h2>
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease, delay: 0.16 }}
-            style={{
-              fontSize: '17px',
-              color: '#a8a0c8',
-              maxWidth: '420px',
-              lineHeight: 1.7,
-              fontWeight: 300,
-              marginBottom: '48px',
-            }}
-          >
-            If I can help you or your company find exceptional talent, drop me a line and let&apos;s talk.
-          </motion.p>
+          <SectionHeader
+            label="Get In Touch"
+            title={<>Let&apos;s work<br />together</>}
+            description="If I can help you or your company find exceptional talent, drop me a line and let's talk."
+            inView={inView}
+          />
 
           {/* Contact info items */}
           {[
@@ -224,7 +184,7 @@ export default function Contact() {
               <h3 style={{ fontFamily: 'var(--font-jakarta)', fontSize: '24px', fontWeight: 700, color: '#f0ecff', marginBottom: '12px' }}>
                 Message sent!
               </h3>
-              <p style={{ color: '#a8a0c8', lineHeight: 1.7 }}>
+              <p style={{ color: '#c0bcd6', lineHeight: 1.7 }}>
                 Thanks for reaching out. Jeff will be in touch shortly.
               </p>
             </motion.div>

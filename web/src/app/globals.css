@@ -105,43 +105,61 @@
   }
 }
 
-/* Marquee animation */
+/* ─── Amber accent tokens ─── */
+:root {
+  --amber-300: #fcd34d;
+  --amber-400: #fbbf24;
+  --amber-500: #f59e0b;
+}
+
+/* ─── Marquee ─── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
-.animate-marquee {
-  animation: marquee 40s linear infinite;
-}
-.animate-marquee-reverse {
-  animation: marquee 35s linear infinite reverse;
-}
+.animate-marquee { animation: marquee 40s linear infinite; }
+.animate-marquee-reverse { animation: marquee 35s linear infinite reverse; }
 
-/* Scroll indicator pulse */
+/* ─── Scroll indicator ─── */
 @keyframes scrollPulse {
   0%, 100% { opacity: 1; transform: scaleY(1); }
   50% { opacity: 0.3; transform: scaleY(0.5); }
 }
-.animate-scroll-pulse {
-  animation: scrollPulse 2s ease-in-out infinite;
-}
+.animate-scroll-pulse { animation: scrollPulse 2s ease-in-out infinite; }
 
-/* Floating particles */
-@keyframes floatUp {
-  0% { opacity: 0; transform: translateY(0) scale(0); }
-  20% { opacity: 0.7; transform: translateY(-20px) scale(1); }
-  80% { opacity: 0.3; transform: translateY(-80px) scale(0.8); }
-  100% { opacity: 0; transform: translateY(-120px) scale(0); }
+/* ─── Twinkle stars (opacity pulse in place) ─── */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.08; transform: scale(0.5); }
+  35%       { opacity: 0.95; transform: scale(1.15); }
+  65%       { opacity: 0.7;  transform: scale(1); }
 }
-.animate-float-up {
-  animation: floatUp 6s ease-in-out infinite;
-}
+.animate-twinkle { animation: twinkle var(--tw-dur, 3s) ease-in-out infinite var(--tw-delay, 0s); }
 
-/* Dot pulse */
+/* ─── Drift particles (float upward & fade) ─── */
+@keyframes drift {
+  0%   { opacity: 0;   transform: translateY(0)     scale(0); }
+  15%  { opacity: 0.9; transform: translateY(-18px)  scale(1); }
+  80%  { opacity: 0.5; transform: translateY(-90px)  scale(0.85); }
+  100% { opacity: 0;   transform: translateY(-130px) scale(0); }
+}
+.animate-drift { animation: drift var(--dr-dur, 7s) ease-in-out infinite var(--dr-delay, 0s); }
+
+/* ─── Glow orb pulse ─── */
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.25; transform: scale(1); }
+  50%       { opacity: 0.65; transform: scale(1.2); }
+}
+.animate-glow { animation: glowPulse var(--glow-dur, 4s) ease-in-out infinite var(--glow-delay, 0s); }
+
+/* ─── Badge dot ─── */
 @keyframes dotPulse {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: 0.4; transform: scale(0.7); }
 }
-.animate-dot-pulse {
-  animation: dotPulse 2s ease-in-out infinite;
-}
+.animate-dot-pulse { animation: dotPulse 2s ease-in-out infinite; }
+
+/* ─── Clip-path title reveal ─── */
+.title-reveal-wrap { overflow: hidden; }
+
+/* ─── Logo card hover ─── */
+.logo-card:hover img { filter: brightness(0) invert(1) !important; opacity: 0.85 !important; }

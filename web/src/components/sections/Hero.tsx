@@ -18,15 +18,46 @@ const fadeUp = {
 const headline1 = 'Helping Disruptors Hire'.split(' ')
 const headline2 = 'Incredible Talent'.split(' ')
 
-const particles = [
-  { left: '12%', top: '65%', delay: '0s', color: '#8b5cf6' },
-  { left: '22%', top: '72%', delay: '1.2s', color: '#a78bfa' },
-  { left: '50%', top: '60%', delay: '2.5s', color: '#8b5cf6' },
-  { left: '72%', top: '68%', delay: '0.8s', color: '#c4b5fd' },
-  { left: '83%', top: '74%', delay: '3.2s', color: '#8b5cf6' },
-  { left: '38%', top: '78%', delay: '1.8s', color: '#a78bfa' },
-  { left: '62%', top: '50%', delay: '4.0s', color: '#c4b5fd' },
-  { left: '30%', top: '55%', delay: '2.0s', color: '#8b5cf6' },
+/* ─── Twinkle stars: fixed positions, pulse in place ─── */
+const twinkleStars = [
+  { left: '4%',  top: '8%',  size: 2.5, dur: '3.1s', delay: '0s',    color: '#e9d5ff' },
+  { left: '11%', top: '22%', size: 1.8, dur: '2.7s', delay: '0.6s',  color: 'white' },
+  { left: '19%', top: '10%', size: 3,   dur: '3.8s', delay: '1.4s',  color: '#c4b5fd' },
+  { left: '28%', top: '35%', size: 2,   dur: '2.5s', delay: '0.3s',  color: 'white' },
+  { left: '38%', top: '18%', size: 2.5, dur: '4.2s', delay: '2.0s',  color: '#e9d5ff' },
+  { left: '47%', top: '8%',  size: 1.5, dur: '3.0s', delay: '1.1s',  color: 'white' },
+  { left: '55%', top: '28%', size: 3,   dur: '3.5s', delay: '0.8s',  color: '#c4b5fd' },
+  { left: '66%', top: '15%', size: 2,   dur: '2.9s', delay: '1.8s',  color: 'white' },
+  { left: '74%', top: '32%', size: 2.5, dur: '3.3s', delay: '0.4s',  color: '#e9d5ff' },
+  { left: '82%', top: '12%', size: 1.8, dur: '4.0s', delay: '2.5s',  color: 'white' },
+  { left: '90%', top: '25%', size: 3,   dur: '3.6s', delay: '1.0s',  color: '#c4b5fd' },
+  { left: '95%', top: '42%', size: 2,   dur: '2.6s', delay: '0.2s',  color: 'white' },
+  { left: '7%',  top: '55%', size: 2.5, dur: '3.9s', delay: '3.2s',  color: '#e9d5ff' },
+  { left: '93%', top: '60%', size: 2,   dur: '3.4s', delay: '1.6s',  color: 'white' },
+  { left: '50%', top: '42%', size: 1.5, dur: '3.7s', delay: '2.8s',  color: '#c4b5fd' },
+]
+
+/* ─── Drift particles: rise upward ─── */
+const driftParticles = [
+  { left: '8%',  top: '70%', size: 5, dur: '7s',  delay: '0s',   color: '#8b5cf6' },
+  { left: '16%', top: '75%', size: 4, dur: '8.5s', delay: '1.2s', color: '#a78bfa' },
+  { left: '25%', top: '68%', size: 6, dur: '6s',  delay: '2.5s', color: '#7c3aed' },
+  { left: '35%', top: '80%', size: 3.5, dur: '9s', delay: '0.5s', color: '#c4b5fd' },
+  { left: '45%', top: '72%', size: 5, dur: '7.5s', delay: '3.0s', color: '#8b5cf6' },
+  { left: '58%', top: '65%', size: 4, dur: '8s',  delay: '1.8s', color: '#a78bfa' },
+  { left: '68%', top: '78%', size: 5.5, dur: '7s', delay: '0.8s', color: '#7c3aed' },
+  { left: '78%', top: '70%', size: 4, dur: '9.5s', delay: '2.2s', color: '#c4b5fd' },
+  { left: '87%', top: '74%', size: 3.5, dur: '6.5s', delay: '4.0s', color: '#8b5cf6' },
+  { left: '94%', top: '68%', size: 5, dur: '8s',  delay: '1.5s', color: '#a78bfa' },
+]
+
+/* ─── Glow orbs: large, slow pulse ─── */
+const glowOrbs = [
+  { left: '5%',  top: '40%', size: 10, dur: '5s',  delay: '0s',   color: 'rgba(124,58,237,0.7)' },
+  { left: '88%', top: '30%', size: 8,  dur: '6.5s', delay: '1.5s', color: 'rgba(167,139,250,0.6)' },
+  { left: '48%', top: '75%', size: 12, dur: '4.5s', delay: '2.5s', color: 'rgba(139,92,246,0.65)' },
+  { left: '20%', top: '15%', size: 7,  dur: '7s',  delay: '0.8s', color: 'rgba(196,181,253,0.5)' },
+  { left: '75%', top: '55%', size: 9,  dur: '5.5s', delay: '3.2s', color: 'rgba(124,58,237,0.6)' },
 ]
 
 export default function Hero() {
@@ -62,20 +93,56 @@ export default function Hero() {
         }}
       />
 
-      {/* Floating particles */}
+      {/* ── Particle field ── */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {particles.map((p, i) => (
+
+        {/* Twinkle stars */}
+        {twinkleStars.map((s, i) => (
           <div
-            key={i}
-            className="absolute animate-float-up"
+            key={`tw-${i}`}
+            className="absolute animate-twinkle"
             style={{
-              left: p.left,
-              top: p.top,
-              animationDelay: p.delay,
-              width: '3px',
-              height: '3px',
+              left: s.left, top: s.top,
+              width: `${s.size}px`, height: `${s.size}px`,
+              borderRadius: '50%',
+              background: s.color,
+              boxShadow: `0 0 ${s.size * 2}px ${s.color}`,
+              ['--tw-dur' as string]: s.dur,
+              ['--tw-delay' as string]: s.delay,
+            }}
+          />
+        ))}
+
+        {/* Drift particles */}
+        {driftParticles.map((p, i) => (
+          <div
+            key={`dr-${i}`}
+            className="absolute animate-drift"
+            style={{
+              left: p.left, top: p.top,
+              width: `${p.size}px`, height: `${p.size}px`,
               borderRadius: '50%',
               background: p.color,
+              boxShadow: `0 0 ${p.size * 3}px ${p.color}`,
+              ['--dr-dur' as string]: p.dur,
+              ['--dr-delay' as string]: p.delay,
+            }}
+          />
+        ))}
+
+        {/* Glow orbs */}
+        {glowOrbs.map((o, i) => (
+          <div
+            key={`gl-${i}`}
+            className="absolute animate-glow"
+            style={{
+              left: o.left, top: o.top,
+              width: `${o.size}px`, height: `${o.size}px`,
+              borderRadius: '50%',
+              background: o.color,
+              boxShadow: `0 0 ${o.size * 4}px ${o.size * 2}px ${o.color.replace('0.', '0.15')}`,
+              ['--glow-dur' as string]: o.dur,
+              ['--glow-delay' as string]: o.delay,
             }}
           />
         ))}
@@ -118,8 +185,9 @@ export default function Hero() {
               width: '6px',
               height: '6px',
               borderRadius: '50%',
-              background: '#a78bfa',
+              background: 'var(--amber-400)',
               display: 'inline-block',
+              boxShadow: '0 0 8px var(--amber-400)',
             }}
           />
           Executive Recruitment
@@ -183,7 +251,7 @@ export default function Hero() {
           custom={0.9}
           style={{
             fontSize: 'clamp(16px, 1.8vw, 20px)',
-            color: '#a8a0c8',
+            color: '#c0bcd6',
             maxWidth: '580px',
             margin: '0 auto 44px',
             lineHeight: 1.75,
@@ -244,7 +312,7 @@ export default function Hero() {
             style={{
               padding: '16px 36px',
               background: 'transparent',
-              color: '#a8a0c8',
+              color: '#c0bcd6',
               border: '1px solid rgba(124, 58, 237, 0.3)',
               borderRadius: '100px',
               fontSize: '15px',
@@ -261,7 +329,7 @@ export default function Hero() {
             onMouseLeave={(e) => {
               const el = e.currentTarget
               el.style.borderColor = 'rgba(124, 58, 237, 0.3)'
-              el.style.color = '#a8a0c8'
+              el.style.color = '#c0bcd6'
               el.style.background = 'transparent'
             }}
           >

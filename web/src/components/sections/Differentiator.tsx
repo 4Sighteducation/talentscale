@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -63,40 +64,11 @@ export default function Differentiator() {
       />
 
       <div className="relative max-w-screen-xl mx-auto">
-        {/* Header */}
-        <div style={{ marginBottom: '72px' }}>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, ease }}
-            className="flex items-center gap-3 mb-5"
-            style={{
-              fontSize: '11px',
-              letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: '#a78bfa',
-              fontWeight: 600,
-            }}
-          >
-            <span style={{ width: '24px', height: '1.5px', background: '#7c3aed', display: 'inline-block' }} />
-            The Difference
-          </motion.div>
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease, delay: 0.08 }}
-            style={{
-              fontFamily: 'var(--font-jakarta)',
-              fontSize: 'clamp(32px, 4vw, 52px)',
-              fontWeight: 700,
-              lineHeight: 1.1,
-              letterSpacing: '-1px',
-              color: '#f0ecff',
-            }}
-          >
-            What I am —<br />and what I&apos;m not
-          </motion.h2>
-        </div>
+        <SectionHeader
+          label="The Difference"
+          title={<>What I am —<br />and what I&apos;m not</>}
+          inView={inView}
+        />
 
         {/* Two-column grid */}
         <div
@@ -115,10 +87,10 @@ export default function Differentiator() {
                 fontWeight: 700,
                 letterSpacing: '2px',
                 textTransform: 'uppercase',
-                color: '#a78bfa',
+                color: 'var(--amber-400)',
                 marginBottom: '32px',
                 paddingBottom: '16px',
-                borderBottom: '1.5px solid #7c3aed',
+                borderBottom: '1.5px solid var(--amber-500)',
               }}
             >
               What You Get
@@ -138,8 +110,8 @@ export default function Differentiator() {
                     width: '28px',
                     height: '28px',
                     borderRadius: '50%',
-                    background: 'rgba(124, 58, 237, 0.14)',
-                    color: '#a78bfa',
+                    background: 'rgba(251, 191, 36, 0.12)',
+                    color: 'var(--amber-400)',
                     fontSize: '14px',
                     marginTop: '2px',
                   }}
@@ -160,7 +132,7 @@ export default function Differentiator() {
                   <div
                     style={{
                       fontSize: '14px',
-                      color: '#a8a0c8',
+                      color: '#c0bcd6',
                       lineHeight: 1.6,
                       fontWeight: 300,
                     }}
@@ -184,10 +156,10 @@ export default function Differentiator() {
                 fontWeight: 700,
                 letterSpacing: '2px',
                 textTransform: 'uppercase',
-                color: '#6b6488',
+                color: '#9994aa',
                 marginBottom: '32px',
                 paddingBottom: '16px',
-                borderBottom: '1.5px solid rgba(255,255,255,0.07)',
+                borderBottom: '1.5px solid rgba(255,255,255,0.1)',
               }}
             >
               What I&apos;m Not
@@ -218,10 +190,10 @@ export default function Differentiator() {
                 <div>
                   <div
                     style={{
-                      fontWeight: 600,
-                      fontSize: '16px',
-                      color: '#6b6488',
-                      marginBottom: '4px',
+                    fontWeight: 600,
+                    fontSize: '16px',
+                    color: '#9994aa',
+                    marginBottom: '4px',
                     }}
                   >
                     {item.title}
@@ -229,7 +201,7 @@ export default function Differentiator() {
                   <div
                     style={{
                       fontSize: '14px',
-                      color: '#a8a0c8',
+                      color: '#c0bcd6',
                       lineHeight: 1.6,
                       fontWeight: 300,
                     }}

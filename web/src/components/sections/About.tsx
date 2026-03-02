@@ -53,8 +53,8 @@ function AnimatedStat({ target, suffix, label, delay }: StatProps) {
         style={{
           fontFamily: 'var(--font-jakarta)',
           fontSize: '38px',
-          fontWeight: 600,
-          color: '#a78bfa',
+          fontWeight: 700,
+          color: 'var(--amber-400)',
           lineHeight: 1,
           marginBottom: '8px',
         }}
@@ -100,9 +100,9 @@ export default function About() {
       >
         {/* Photo */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={inView ? { opacity: 1, x: 0 } : {}}
-          transition={{ duration: 0.9, ease }}
+          initial={{ opacity: 0, x: -40, scale: 0.96 }}
+          animate={inView ? { opacity: 1, x: 0, scale: 1 } : {}}
+          transition={{ duration: 1.1, ease }}
           className="relative"
         >
           {/* Offset border decoration */}
@@ -157,7 +157,7 @@ export default function About() {
               fontWeight: 700,
               letterSpacing: '3px',
               textTransform: 'uppercase',
-              color: '#a78bfa',
+              color: 'var(--amber-400)',
               marginBottom: '16px',
             }}
           >
@@ -193,7 +193,7 @@ export default function About() {
               transition={{ duration: 0.7, ease, delay: 0.26 + i * 0.08 }}
               style={{
                 fontSize: '16px',
-                color: '#a8a0c8',
+                color: '#c0bcd6',
                 lineHeight: 1.8,
                 marginBottom: '18px',
                 fontWeight: 300,

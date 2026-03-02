@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -58,7 +59,7 @@ function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolea
               border: '1px solid rgba(124, 58, 237, 0.12)',
               borderRadius: '100px',
               fontSize: '13px',
-              color: '#a8a0c8',
+              color: '#c0bcd6',
               whiteSpace: 'nowrap',
               cursor: 'default',
               transition: 'all 0.3s ease',
@@ -72,7 +73,7 @@ function Marquee({ items, reverse = false }: { items: string[]; reverse?: boolea
             onMouseLeave={(e) => {
               const el = e.currentTarget as HTMLSpanElement
               el.style.borderColor = 'rgba(124, 58, 237, 0.12)'
-              el.style.color = '#a8a0c8'
+              el.style.color = '#c0bcd6'
               el.style.background = 'rgba(19, 17, 42, 0.6)'
             }}
           >
@@ -94,54 +95,13 @@ export default function Roles() {
       ref={ref}
       style={{ padding: '120px 0' }}
     >
-      <div style={{ padding: '0 48px', maxWidth: '1280px', margin: '0 auto 48px' }}>
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease }}
-          className="flex items-center gap-3 mb-5"
-          style={{
-            fontSize: '11px',
-            letterSpacing: '3px',
-            textTransform: 'uppercase',
-            color: '#a78bfa',
-            fontWeight: 600,
-          }}
-        >
-          <span style={{ width: '24px', height: '1.5px', background: '#7c3aed', display: 'inline-block' }} />
-          Roles I Cover
-        </motion.div>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease, delay: 0.08 }}
-          style={{
-            fontFamily: 'var(--font-jakarta)',
-            fontSize: 'clamp(32px, 4vw, 52px)',
-            fontWeight: 700,
-            lineHeight: 1.1,
-            letterSpacing: '-1px',
-            color: '#f0ecff',
-            marginBottom: '20px',
-          }}
-        >
-          From C-Suite to<br />senior leadership
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease, delay: 0.16 }}
-          style={{
-            fontSize: '17px',
-            color: '#a8a0c8',
-            maxWidth: '520px',
-            lineHeight: 1.7,
-            fontWeight: 300,
-          }}
-        >
-          I cover all types of roles for organisations large and small. Here&apos;s a
-          snapshot of the searches I&apos;ve conducted.
-        </motion.p>
+      <div style={{ padding: '0 48px', maxWidth: '1280px', margin: '0 auto' }}>
+        <SectionHeader
+          label="Roles I Cover"
+          title={<>From C-Suite to<br />senior leadership</>}
+          description="I cover all types of roles for organisations large and small. Here's a snapshot of the searches I've conducted."
+          inView={inView}
+        />
       </div>
 
       {/* Marquee rows */}

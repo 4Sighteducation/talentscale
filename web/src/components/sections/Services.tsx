@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 
 const ease = [0.16, 1, 0.3, 1] as const
 
@@ -77,57 +78,12 @@ export default function Services() {
       ref={ref}
       style={{ padding: '120px 48px', maxWidth: '1280px', margin: '0 auto' }}
     >
-      {/* Header */}
-      <div style={{ marginBottom: '72px' }}>
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, ease }}
-          className="flex items-center gap-3 mb-5"
-          style={{
-            fontSize: '11px',
-            letterSpacing: '3px',
-            textTransform: 'uppercase',
-            color: '#a78bfa',
-            fontWeight: 600,
-          }}
-        >
-          <span style={{ width: '24px', height: '1.5px', background: '#7c3aed', display: 'inline-block' }} />
-          What I Do
-        </motion.div>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease, delay: 0.08 }}
-          style={{
-            fontFamily: 'var(--font-jakarta)',
-            fontSize: 'clamp(32px, 4vw, 52px)',
-            fontWeight: 700,
-            lineHeight: 1.1,
-            letterSpacing: '-1px',
-            color: '#f0ecff',
-            maxWidth: '600px',
-          }}
-        >
-          Strategic recruitment<br />for ambitious companies
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease, delay: 0.16 }}
-          style={{
-            fontSize: '17px',
-            color: '#a8a0c8',
-            maxWidth: '520px',
-            lineHeight: 1.7,
-            marginTop: '20px',
-            fontWeight: 300,
-          }}
-        >
-          I specialise in hiring key leadership roles, helping founders and their teams on
-          critical strategic hires that drive real business impact.
-        </motion.p>
-      </div>
+      <SectionHeader
+        label="What I Do"
+        title={<>Strategic recruitment<br />for ambitious companies</>}
+        description="I specialise in hiring key leadership roles, helping founders and their teams on critical strategic hires that drive real business impact."
+        inView={inView}
+      />
 
       {/* Grid */}
       <div
@@ -137,9 +93,9 @@ export default function Services() {
         {services.map((svc, i) => (
           <motion.div
             key={svc.title}
-            initial={{ opacity: 0, y: 30 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, ease, delay: 0.2 + i * 0.08 }}
+            initial={{ opacity: 0, y: 40, scale: 0.94, filter: 'blur(4px)' }}
+            animate={inView ? { opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' } : {}}
+            transition={{ duration: 0.75, ease, delay: 0.15 + i * 0.09 }}
             style={{
               background: 'rgba(19, 17, 42, 0.55)',
               border: '1px solid rgba(124, 58, 237, 0.1)',
@@ -203,7 +159,7 @@ export default function Services() {
             <p
               style={{
                 fontSize: '14px',
-                color: '#a8a0c8',
+                color: '#c0bcd6',
                 lineHeight: 1.7,
                 fontWeight: 300,
               }}
