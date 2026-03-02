@@ -22,9 +22,11 @@ export default function TrustStrip() {
   return (
     <section
       ref={ref}
+      className="px-6 md:px-12"
       style={{
         background: '#0c0b18',
-        padding: '100px 48px',
+        paddingTop: '80px',
+        paddingBottom: '80px',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -98,31 +100,23 @@ export default function TrustStrip() {
           </p>
         </motion.div>
 
-        {/* Logo grid — 3×2 */}
-        <div
-          className="grid gap-4"
-          style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}
-        >
+        {/* Logo grid — 2 cols on mobile, 3 on desktop */}
+        <div className="grid gap-4 grid-cols-2 md:grid-cols-3">
           {logos.map((logo, i) => (
             <motion.div
               key={logo.name}
               initial={{ opacity: 0, y: 24, scale: 0.96 }}
               animate={inView ? { opacity: 1, y: 0, scale: 1 } : {}}
               transition={{ duration: 0.6, ease, delay: 0.1 + i * 0.07 }}
-              className="logo-card group"
+              className="logo-card group relative flex items-center justify-center overflow-hidden"
               style={{
-                position: 'relative',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '36px 32px',
+                padding: '32px 24px',
                 background: 'rgba(19, 17, 42, 0.5)',
                 border: '1px solid rgba(124, 58, 237, 0.1)',
                 borderRadius: '20px',
                 cursor: 'default',
                 transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                overflow: 'hidden',
-                minHeight: '100px',
+                minHeight: '96px',
               }}
               whileHover={{
                 borderColor: 'rgba(124, 58, 237, 0.28)',
@@ -132,37 +126,31 @@ export default function TrustStrip() {
             >
               {/* Top shimmer on hover */}
               <div
+                className="absolute inset-x-0 top-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-400"
                 style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '1px',
                   background: 'linear-gradient(90deg, transparent, rgba(167, 139, 250, 0.5), transparent)',
-                  opacity: 0,
-                  transition: 'opacity 0.4s ease',
                 }}
-                className="group-hover:opacity-100"
               />
               <Image
                 src={logo.src}
                 alt={logo.name}
-                width={180}
-                height={70}
-                className="object-contain transition-all duration-500"
+                width={160}
+                height={56}
+                sizes="(max-width: 768px) 40vw, 25vw"
+                className="transition-opacity duration-500"
                 style={{
-                  maxHeight: '52px',
-                  width: 'auto',
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '48px',
+                  objectFit: 'contain',
                   filter: 'brightness(0) invert(1)',
-                  opacity: 0.4,
+                  opacity: 0.45,
                 }}
                 onMouseEnter={(e) => {
-                  const img = e.currentTarget as HTMLImageElement
-                  img.style.opacity = '0.9'
+                  ;(e.currentTarget as HTMLImageElement).style.opacity = '0.9'
                 }}
                 onMouseLeave={(e) => {
-                  const img = e.currentTarget as HTMLImageElement
-                  img.style.opacity = '0.4'
+                  ;(e.currentTarget as HTMLImageElement).style.opacity = '0.45'
                 }}
               />
             </motion.div>

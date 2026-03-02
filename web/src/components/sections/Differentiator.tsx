@@ -48,7 +48,7 @@ export default function Differentiator() {
     <section
       ref={ref}
       style={{
-        padding: '120px 48px',
+        padding: 'clamp(60px, 10vw, 120px) clamp(20px, 5vw, 48px)',
         background: '#0c0b18',
         position: 'relative',
         overflow: 'hidden',

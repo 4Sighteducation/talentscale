@@ -10,7 +10,7 @@ export default function Quote() {
   return (
     <section
       style={{
-        padding: '120px 48px',
+        padding: 'clamp(60px, 10vw, 120px) clamp(20px, 5vw, 48px)',
         background: '#0c0b18',
         textAlign: 'center',
         position: 'relative',

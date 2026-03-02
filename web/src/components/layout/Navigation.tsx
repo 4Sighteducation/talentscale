@@ -36,7 +36,7 @@ export default function Navigation() {
         transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between"
         style={{
-          padding: scrolled ? '14px 48px' : '20px 48px',
+          padding: scrolled ? '14px clamp(20px,4vw,48px)' : '20px clamp(20px,4vw,48px)',
           background: scrolled ? 'rgba(6, 5, 14, 0.85)' : 'transparent',
           backdropFilter: scrolled ? 'blur(24px) saturate(1.4)' : 'none',
           WebkitBackdropFilter: scrolled ? 'blur(24px) saturate(1.4)' : 'none',

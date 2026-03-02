@@ -83,7 +83,7 @@ export default function About() {
       id="about"
       ref={ref}
       className="relative"
-      style={{ padding: '120px 48px' }}
+      style={{ padding: 'clamp(60px, 10vw, 120px) clamp(20px, 5vw, 48px)' }}
     >
       {/* Ambient glow */}
       <div

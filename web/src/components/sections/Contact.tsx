@@ -52,7 +52,7 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      style={{ padding: '120px 48px', position: 'relative' }}
+      style={{ padding: 'clamp(60px, 10vw, 120px) clamp(20px, 5vw, 48px)', position: 'relative' }}
     >
       {/* Ambient */}
       <div

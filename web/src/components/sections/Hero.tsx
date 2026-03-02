@@ -65,7 +65,7 @@ export default function Hero() {
     <section
       id="hero"
       className="relative min-h-screen flex flex-col justify-center items-center text-center overflow-hidden"
-      style={{ padding: '120px 48px 80px' }}
+      style={{ padding: 'clamp(100px, 14vw, 120px) clamp(20px, 5vw, 48px) 80px' }}
     >
       {/* Gradient mesh background */}
       <div

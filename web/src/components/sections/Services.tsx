@@ -76,7 +76,7 @@ export default function Services() {
     <section
       id="expertise"
       ref={ref}
-      style={{ padding: '120px 48px', maxWidth: '1280px', margin: '0 auto' }}
+      style={{ padding: 'clamp(60px, 10vw, 120px) clamp(20px, 5vw, 48px)', maxWidth: '1280px', margin: '0 auto' }}
     >
       <SectionHeader
         label="What I Do"

@@ -93,9 +93,9 @@ export default function Roles() {
     <section
       id="roles"
       ref={ref}
-      style={{ padding: '120px 0' }}
+      className="py-16 md:py-28"
     >
-      <div style={{ padding: '0 48px', maxWidth: '1280px', margin: '0 auto' }}>
+      <div className="px-5 md:px-12" style={{ maxWidth: '1280px', margin: '0 auto' }}>
         <SectionHeader
           label="Roles I Cover"
           title={<>From C-Suite to<br />senior leadership</>}
