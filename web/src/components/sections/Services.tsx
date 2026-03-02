@@ -35,8 +35,8 @@ const services = [
         <path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z" />
       </svg>
     ),
-    title: 'Market Insight',
-    desc: 'Strategic advisory on role positioning, compensation benchmarking, and organisational design. I\'ve got my finger on the pulse.',
+    title: 'Market Intelligence',
+    desc: 'Strategic counsel on role design, salary benchmarking and talent market dynamics — so you make informed decisions, not just fast ones.',
   },
   {
     icon: (
@@ -81,7 +81,7 @@ export default function Services() {
       <SectionHeader
         label="What I Do"
         title={<>Strategic recruitment<br />for ambitious companies</>}
-        description="I specialise in hiring key leadership roles, helping founders and their teams on critical strategic hires that drive real business impact."
+        description="I specialise in placing senior leaders — helping founders and executive teams make the strategic hires that define their company's next chapter."
         inView={inView}
       />
 

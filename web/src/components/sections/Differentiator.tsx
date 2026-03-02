@@ -8,35 +8,35 @@ const ease = [0.16, 1, 0.3, 1] as const
 
 const pros = [
   {
-    title: '20+ Years Experience',
-    desc: 'Outstanding reputation with an enviable client and candidate network built over two decades.',
+    title: '20+ Years of Real Access',
+    desc: 'A network built over two decades of senior placements — giving access to candidates and conversations that most recruiters simply can\'t reach.',
   },
   {
-    title: 'Deep Industry Expertise',
-    desc: 'Multiple sector and channel experience across Marketing, Product, Sales, Technology, and more.',
+    title: 'Deep Functional Expertise',
+    desc: 'Specialist knowledge across Marketing, Product, Sales and Technology — shaped by thousands of conversations with senior leaders at every growth stage.',
   },
   {
-    title: 'Honest & Engaging',
-    desc: "I listen. I'm upfront about what I can and can't do. I'm an expert in my core areas. I'm fun. I deliver.",
+    title: 'Direct & Straightforward',
+    desc: "I listen carefully and I'm honest about what I can and can't do. No spin, no overselling — just clear thinking and consistent follow-through.",
   },
   {
-    title: 'Proven, Checkable Results',
-    desc: 'My record speaks for itself. My reputation is everything — and it can be verified.',
+    title: 'A Track Record You Can Verify',
+    desc: '500+ senior placements over two decades. My clients come back and refer me to others. That\'s the only measure I care about.',
   },
 ]
 
 const cons = [
   {
-    title: 'Mass Volume Recruiter',
-    desc: "I haven't built this business based on targets — but on rock solid delivery.",
+    title: 'A Volume Recruiter',
+    desc: 'I take on mandates I can genuinely deliver on — not everything that comes my way. Volume means nothing without results.',
   },
   {
     title: 'Arrogant or Full of Ego',
-    desc: 'No corporate bluster. Just honest, direct conversations about what matters.',
+    desc: 'No corporate bluster. Just honest, direct conversations about what matters to your business.',
   },
   {
-    title: 'Unable to Demonstrate Success',
-    desc: 'The buck stops with me. Check me out — see the client portfolio and ask around.',
+    title: 'An Unknown Quantity',
+    desc: 'Every placement is traceable. My clients can speak directly to how I work — and I actively welcome that scrutiny.',
   },
 ]
 

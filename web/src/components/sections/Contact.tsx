@@ -74,7 +74,7 @@ export default function Contact() {
           <SectionHeader
             label="Get In Touch"
             title={<>Let&apos;s work<br />together</>}
-            description="If I can help you or your company find exceptional talent, drop me a line and let's talk."
+            description="Whether you're building a leadership team or searching for one transformative hire, I'd love to hear about your challenge."
             inView={inView}
           />
 

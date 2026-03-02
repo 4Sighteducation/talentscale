@@ -182,9 +182,9 @@ export default function About() {
           </motion.h2>
 
           {[
-            `I'm a highly experienced and very connected recruitment director with 20+ years of commercial expertise throughout the UK and Europe. I've built teams multiple times across Start-Ups and Scale-Ups in Health, Finance, Media, Technology, and SaaS.`,
-            `I've advised founders and executive teams extensively on role positioning, organisational design and market insight. I have extensive experience working with investors across VC, Private Equity and countless founders of tech companies.`,
-            `My reputation is everything. The buck stops with me and I can be checked out.`,
+            `With over 20 years of recruitment experience across the UK and Europe, I've built a network that spans the most ambitious start-ups and scale-ups in Health, Fintech, Media, Technology and SaaS — placing senior leaders who genuinely move the needle.`,
+            `I work closely with founders and executive teams on role positioning, organisational design and talent strategy. I have deep relationships across the VC and Private Equity landscape, and with the founders of some of the UK's most successful tech companies.`,
+            `My reputation is the foundation of everything I do. Every client and every candidate I've worked with can speak to how I operate — and that track record is something I'm genuinely proud of.`,
           ].map((text, i) => (
             <motion.p
               key={i}

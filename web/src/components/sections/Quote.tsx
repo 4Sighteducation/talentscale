@@ -56,11 +56,11 @@ export default function Quote() {
             fontStyle: 'italic',
           }}
         >
-          I have my finger on the pulse and I am{' '}
-          <strong style={{ color: '#c4b5fd', fontWeight: 600, fontStyle: 'normal' }}>connected</strong>.
-          {' '}I don&apos;t just fill roles — I find the people who will{' '}
+          The best candidates aren&apos;t applying for jobs. They&apos;re busy doing{' '}
+          <strong style={{ color: '#c4b5fd', fontWeight: 600, fontStyle: 'normal' }}>exceptional work</strong>
+          {' '}somewhere else. My job is knowing exactly who they are — and having the{' '}
           <strong style={{ color: '#c4b5fd', fontWeight: 600, fontStyle: 'normal' }}>
-            transform your business
+            relationship to reach them
           </strong>.
         </p>
 

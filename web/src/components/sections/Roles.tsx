@@ -99,7 +99,7 @@ export default function Roles() {
         <SectionHeader
           label="Roles I Cover"
           title={<>From C-Suite to<br />senior leadership</>}
-          description="I cover all types of roles for organisations large and small. Here's a snapshot of the searches I've conducted."
+          description="I work with companies of all sizes — from founder-led start-ups to established corporates. Here's a snapshot of the searches I've run."
           inView={inView}
         />
       </div>
