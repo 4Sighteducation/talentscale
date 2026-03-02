@@ -11,8 +11,6 @@ const logos = [
   { name: 'Monzo', src: '/logos/monzo.png' },
   { name: 'Wise', src: '/logos/wise.png' },
   { name: 'Depop', src: '/logos/depop.png' },
-  { name: 'GoCardless', src: '/logos/gocardless.jpg' },
-  { name: 'Checkout.com', src: '/logos/checkout.jpg' },
   { name: 'Bloom & Wild', src: '/logos/bloom-and-wild.png' },
   { name: 'Cazoo', src: '/logos/cazoo.png' },
 ]
@@ -100,10 +98,10 @@ export default function TrustStrip() {
           </p>
         </motion.div>
 
-        {/* Logo grid */}
+        {/* Logo grid — 3×2 */}
         <div
           className="grid gap-4"
-          style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))' }}
+          style={{ gridTemplateColumns: 'repeat(3, 1fr)' }}
         >
           {logos.map((logo, i) => (
             <motion.div
@@ -117,13 +115,14 @@ export default function TrustStrip() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                padding: '28px 24px',
+                padding: '36px 32px',
                 background: 'rgba(19, 17, 42, 0.5)',
                 border: '1px solid rgba(124, 58, 237, 0.1)',
-                borderRadius: '16px',
+                borderRadius: '20px',
                 cursor: 'default',
                 transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
                 overflow: 'hidden',
+                minHeight: '100px',
               }}
               whileHover={{
                 borderColor: 'rgba(124, 58, 237, 0.28)',
@@ -148,22 +147,22 @@ export default function TrustStrip() {
               <Image
                 src={logo.src}
                 alt={logo.name}
-                width={160}
-                height={60}
+                width={180}
+                height={70}
                 className="object-contain transition-all duration-500"
                 style={{
-                  maxHeight: '44px',
+                  maxHeight: '52px',
                   width: 'auto',
                   filter: 'brightness(0) invert(1)',
-                  opacity: 0.35,
+                  opacity: 0.4,
                 }}
                 onMouseEnter={(e) => {
                   const img = e.currentTarget as HTMLImageElement
-                  img.style.opacity = '0.8'
+                  img.style.opacity = '0.9'
                 }}
                 onMouseLeave={(e) => {
                   const img = e.currentTarget as HTMLImageElement
-                  img.style.opacity = '0.35'
+                  img.style.opacity = '0.4'
                 }}
               />
             </motion.div>
