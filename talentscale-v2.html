@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Talent Scale — Helping Disruptors Hire Incredible Talent</title>
 <link rel="icon" type="image/svg+xml" href="brand/icon-mark-rounded.svg">
 <link rel="mask-icon" href="brand/safari-pinned-tab.svg" color="#059669">
@@ -58,6 +58,9 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  max-width: 100%;
+  overflow-x: clip;
+  overscroll-behavior-x: none;
 }
 
 body {
@@ -65,7 +68,13 @@ body {
   background: var(--surface-0);
   color: var(--text-primary);
   overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
   line-height: 1.6;
+}
+
+@supports not (overflow: clip) {
+  html { overflow-x: hidden; }
 }
 
 /* ═══════════════════════════════════════════
@@ -707,6 +716,7 @@ body::before {
 .about {
   padding: 120px 48px;
   position: relative;
+  overflow-x: clip;
 }
 
 .about::before {
