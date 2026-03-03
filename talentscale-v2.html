@@ -2077,47 +2077,69 @@ document.addEventListener('keydown', (e) => {
 });
 
 if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
+  const handleContactSubmit = async (e) => {
     e.preventDefault();
+
     const formData = new FormData(contactForm);
     const emailField = contactForm.querySelector('input[name="email"]');
     if (emailField && emailField.value) {
       formData.set('_replyto', emailField.value);
     }
+
     if (contactSubmitButton) {
       contactSubmitButton.disabled = true;
       contactSubmitButton.textContent = 'Sending...';
     }
+
     try {
       const response = await fetch(contactForm.action, {
         method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }
       });
+
       let payload = null;
       try {
         payload = await response.json();
       } catch (_) {
         payload = null;
       }
+
       if (response.ok) {
         contactForm.reset();
         openFormModal('Thank you', 'Thank you and I will be in touch soon');
-      } else {
-        const errMsg = payload && payload.errors && payload.errors.length
-          ? payload.errors.map(err => err.message).join(' ')
-          : 'Sorry, your message did not send. Please try again or email jeff@talentscale.io directly.';
-        openFormModal('Message not sent', errMsg, true);
+        return;
       }
+
+      const errMsg = payload && payload.errors && payload.errors.length
+        ? payload.errors.map(err => err.message).join(' ')
+        : 'Sorry, your message did not send. Please try again or email jeff@talentscale.io directly.';
+      openFormModal('Message not sent', errMsg, true);
     } catch (err) {
-      openFormModal('Connection issue', 'Sorry, we could not reach the form service. Please try again or email jeff@talentscale.io directly.', true);
+      // If a blocker/network policy kills fetch(), fall back to classic POST submit.
+      try {
+        contactForm.removeEventListener('submit', handleContactSubmit);
+        if (emailField && emailField.value) {
+          const hiddenReplyTo = document.createElement('input');
+          hiddenReplyTo.type = 'hidden';
+          hiddenReplyTo.name = '_replyto';
+          hiddenReplyTo.value = emailField.value;
+          contactForm.appendChild(hiddenReplyTo);
+        }
+        contactForm.submit();
+        return;
+      } catch (_) {
+        openFormModal('Connection issue', 'Sorry, we could not reach the form service. Please try again or email jeff@talentscale.io directly.', true);
+      }
     } finally {
       if (contactSubmitButton) {
         contactSubmitButton.disabled = false;
         contactSubmitButton.textContent = 'Send Message';
       }
     }
-  });
+  };
+
+  contactForm.addEventListener('submit', handleContactSubmit);
 }
 </script>
 
