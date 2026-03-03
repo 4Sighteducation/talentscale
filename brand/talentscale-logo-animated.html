@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TalentScale — Animated Logo</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    gap: 60px;
+    font-family: 'Outfit', sans-serif;
+  }
+
+  .label {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #4a4a60;
+    text-align: center;
+  }
+
+  .demo-row {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .demo-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  /* ── The actual animated logo SVG ── */
+  .ts-logo {
+    display: block;
+  }
+
+  /* ── Mountain chevrons ── */
+  .chev-1, .chev-2, .chev-3 {
+    transform-origin: 52px 18px;
+    transform-box: fill-box;
+  }
+
+  .chev-1 {
+    animation: chev-rise 0.55s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+  }
+  .chev-2 {
+    animation: chev-rise 0.55s cubic-bezier(0.22,1,0.36,1) 0.28s both;
+  }
+  .chev-3 {
+    animation: chev-rise 0.55s cubic-bezier(0.22,1,0.36,1) 0.44s both;
+  }
+
+  @keyframes chev-rise {
+    from { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(12px); }
+    to   { opacity: 1; clip-path: inset(0% 0 0 0);   transform: translateY(0); }
+  }
+
+  /* ── Baseline draw-in ── */
+  .baseline-main {
+    stroke-dasharray: 100;
+    stroke-dashoffset: 100;
+    animation: draw-line 0.5s cubic-bezier(0.22,1,0.36,1) 0.75s forwards;
+  }
+  .baseline-subtle {
+    stroke-dasharray: 80;
+    stroke-dashoffset: 80;
+    animation: draw-line 0.5s cubic-bezier(0.22,1,0.36,1) 0.82s forwards;
+  }
+  @keyframes draw-line {
+    to { stroke-dashoffset: 0; }
+  }
+
+  /* ── TALENT slide+fade ── */
+  .text-talent {
+    animation: slide-in 0.6s cubic-bezier(0.22,1,0.36,1) 1.0s both;
+  }
+  @keyframes slide-in {
+    from { opacity: 0; transform: translateX(20px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  /* ── SCALE letter stagger ── */
+  .scale-s  { animation: letter-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) 1.35s both; }
+  .scale-c  { animation: letter-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) 1.44s both; }
+  .scale-a  { animation: letter-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) 1.53s both; }
+  .scale-l  { animation: letter-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) 1.62s both; }
+  .scale-e  { animation: letter-pop 0.4s cubic-bezier(0.34,1.56,0.64,1) 1.71s both; }
+
+  @keyframes letter-pop {
+    from { opacity: 0; transform: translateY(8px) scale(0.8); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+  }
+
+  /* ── Apex glow pulse after build ── */
+  .apex-glow {
+    animation: glow-pulse 1.8s ease-in-out 2.2s both;
+  }
+  @keyframes glow-pulse {
+    0%   { opacity: 0; r: 0; }
+    40%  { opacity: 0.6; r: 18; }
+    100% { opacity: 0; r: 28; }
+  }
+
+  /* ── Orange accent line pop ── */
+  .accent-dot {
+    animation: dot-appear 0.3s ease-out 1.0s both;
+  }
+  @keyframes dot-appear {
+    from { opacity: 0; transform: scale(0); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  /* ── Light bg version overrides ── */
+  .light-version .chev-1, .light-version .chev-2, .light-version .chev-3,
+  .light-version .text-talent, .light-version .scale-s, .light-version .scale-c,
+  .light-version .scale-a, .light-version .scale-l, .light-version .scale-e,
+  .light-version .baseline-main, .light-version .baseline-subtle, .light-version .apex-glow {
+    animation-delay: calc(var(--delay, 0s) + 0.3s);
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ DARK VERSION ═══ -->
+<div class="demo-tile">
+  <div class="label">Dark — Primary</div>
+
+  <svg class="ts-logo" width="340" height="96"
+       viewBox="0 0 340 96" xmlns="http://www.w3.org/2000/svg"
+       style="overflow:visible;">
+    <defs>
+      <linearGradient id="gd" x1="0" y1="1" x2="0.5" y2="0">
+        <stop offset="0%"   stop-color="#059669"/>
+        <stop offset="100%" stop-color="#34d399"/>
+      </linearGradient>
+      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#34d399" stop-opacity="0.8"/>
+        <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="soft-glow">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+    </defs>
+
+    <!-- chevrons -->
+    <path class="chev-1" d="M52,10 L84,52 L20,52 Z"
+          fill="url(#gd)" opacity="0.28"/>
+    <path class="chev-2" d="M52,26 L76,58 L28,58 Z"
+          fill="url(#gd)" opacity="0.58"/>
+    <path class="chev-3" d="M52,40 L66,64 L38,64 Z"
+          fill="url(#gd)"/>
+
+    <!-- apex glow -->
+    <circle class="apex-glow" cx="52" cy="10" r="0"
+            fill="url(#glow)" filter="url(#soft-glow)"/>
+
+    <!-- baseline -->
+    <line class="baseline-main"
+          x1="8" y1="80" x2="98" y2="80"
+          stroke="#C7632A" stroke-width="2.5" stroke-linecap="round"/>
+    <line class="baseline-subtle"
+          x1="8" y1="73" x2="74" y2="73"
+          stroke="#C7632A" stroke-width="1" opacity="0.35" stroke-linecap="round"/>
+
+    <!-- TALENT -->
+    <text class="text-talent"
+          x="116" y="62"
+          font-family="'Outfit',sans-serif"
+          font-size="36" font-weight="800"
+          fill="#ecfdf5" letter-spacing="-0.5">TALENT</text>
+
+    <!-- SCALE — letter by letter -->
+    <g font-family="'Outfit',sans-serif" font-size="26" font-weight="300" fill="#C7632A">
+      <text class="scale-s" x="118"  y="86" transform-origin="118 86"  transform-box="fill-box">S</text>
+      <text class="scale-c" x="136"  y="86" transform-origin="136 86"  transform-box="fill-box">C</text>
+      <text class="scale-a" x="153"  y="86" transform-origin="153 86"  transform-box="fill-box">A</text>
+      <text class="scale-l" x="172"  y="86" transform-origin="172 86"  transform-box="fill-box">L</text>
+      <text class="scale-e" x="186"  y="86" transform-origin="186 86"  transform-box="fill-box">E</text>
+    </g>
+  </svg>
+</div>
+
+<!-- ═══ COMPACT ICON ONLY ═══ -->
+<div class="demo-row">
+
+  <div class="demo-tile">
+    <div class="label">Icon · 64px</div>
+    <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;">
+      <defs>
+        <linearGradient id="gi" x1="0" y1="1" x2="0.5" y2="0">
+          <stop offset="0%"   stop-color="#059669"/>
+          <stop offset="100%" stop-color="#34d399"/>
+        </linearGradient>
+        <radialGradient id="glow2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#34d399" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="64" height="64" rx="14" fill="#0a0a0f"/>
+      <path class="chev-1" d="M32,7  L56,42 L8,42 Z"  fill="url(#gi)" opacity="0.28"/>
+      <path class="chev-2" d="M32,20 L50,46 L14,46 Z" fill="url(#gi)" opacity="0.58"/>
+      <path class="chev-3" d="M32,30 L44,50 L20,50 Z" fill="url(#gi)"/>
+      <circle class="apex-glow" cx="32" cy="7" r="0" fill="url(#glow2)"/>
+      <line class="baseline-main"
+            x1="6" y1="58" x2="58" y2="58"
+            stroke="#C7632A" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <div class="demo-tile">
+    <div class="label">Light Background</div>
+    <div style="background:#f5f5f7; border-radius:12px; padding:28px 40px;">
+      <svg class="ts-logo light-version" width="280" height="80"
+           viewBox="0 0 340 96" xmlns="http://www.w3.org/2000/svg"
+           style="overflow:visible;">
+        <defs>
+          <linearGradient id="gl" x1="0" y1="1" x2="0.5" y2="0">
+            <stop offset="0%"   stop-color="#047857"/>
+            <stop offset="100%" stop-color="#059669"/>
+          </linearGradient>
+        </defs>
+        <path class="chev-1" d="M52,10 L84,52 L20,52 Z" fill="url(#gl)" opacity="0.22"/>
+        <path class="chev-2" d="M52,26 L76,58 L28,58 Z" fill="url(#gl)" opacity="0.52"/>
+        <path class="chev-3" d="M52,40 L66,64 L38,64 Z" fill="url(#gl)"/>
+        <line class="baseline-main"
+              x1="8" y1="80" x2="98" y2="80"
+              stroke="#A3501F" stroke-width="2.5" stroke-linecap="round"/>
+        <line class="baseline-subtle"
+              x1="8" y1="73" x2="74" y2="73"
+              stroke="#A3501F" stroke-width="1" opacity="0.35" stroke-linecap="round"/>
+        <text class="text-talent"
+              x="116" y="62"
+              font-family="'Outfit',sans-serif"
+              font-size="36" font-weight="800"
+              fill="#052e16" letter-spacing="-0.5">TALENT</text>
+        <g font-family="'Outfit',sans-serif" font-size="26" font-weight="300" fill="#A3501F">
+          <text class="scale-s" x="118" y="86" transform-origin="118 86" transform-box="fill-box">S</text>
+          <text class="scale-c" x="136" y="86" transform-origin="136 86" transform-box="fill-box">C</text>
+          <text class="scale-a" x="153" y="86" transform-origin="153 86" transform-box="fill-box">A</text>
+          <text class="scale-l" x="172" y="86" transform-origin="172 86" transform-box="fill-box">L</text>
+          <text class="scale-e" x="186" y="86" transform-origin="186 86" transform-box="fill-box">E</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ EMBED CODE ═══ -->
+<div style="max-width:600px; width:100%; padding:0 24px;">
+  <div style="font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#4a4a60;margin-bottom:14px;">
+    Web Embed — Animated SVG (no GIF needed)
+  </div>
+  <div style="background:#111118;border:1px solid #1e1e2a;border-radius:10px;padding:20px;font-family:monospace;font-size:11px;line-height:1.9;color:#8a8aaa;overflow-x:auto;">
+    <span style="color:#559966;">&lt;!-- Drop this SVG inline in your HTML --&gt;</span><br>
+    <span style="color:#34d399;">&lt;svg</span> width=<span style="color:#C7632A;">"340"</span> height=<span style="color:#C7632A;">"96"</span> viewBox=<span style="color:#C7632A;">"0 0 340 96"</span><span style="color:#34d399;">&gt;</span><br>
+    &nbsp;&nbsp;<span style="color:#559966;">&lt;!-- Animated logo builds on every page load --&gt;</span><br>
+    <span style="color:#34d399;">&lt;/svg&gt;</span><br>
+    <br>
+    <span style="color:#559966;">&lt;!-- Or use as GIF for email / platforms --&gt;</span><br>
+    <span style="color:#34d399;">&lt;img</span> src=<span style="color:#C7632A;">"talentscale-logo-animated.gif"</span> alt=<span style="color:#C7632A;">"TalentScale"</span> width=<span style="color:#C7632A;">"340"</span><span style="color:#34d399;">&gt;</span>
+  </div>
+</div>
+
+</body>
+</html>

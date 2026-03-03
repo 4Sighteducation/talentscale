@@ -4,33 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Talent Scale — Helping Disruptors Hire Incredible Talent</title>
+<link rel="icon" type="image/svg+xml" href="brand/icon-mark-rounded.svg">
+<link rel="mask-icon" href="brand/safari-pinned-tab.svg" color="#059669">
+<meta name="theme-color" content="#059669">
+<meta property="og:image" content="brand/og-image.svg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="brand/twitter-card.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;800&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
    CSS CUSTOM PROPERTIES & RESET
    ═══════════════════════════════════════════ */
 :root {
-  --violet-50: #f5f3ff;
-  --violet-100: #ede9fe;
-  --violet-200: #ddd6fe;
-  --violet-300: #c4b5fd;
-  --violet-400: #a78bfa;
-  --violet-500: #8b5cf6;
-  --violet-600: #7c3aed;
-  --violet-700: #6d28d9;
-  --violet-800: #5b21b6;
-  --violet-900: #4c1d95;
-  --violet-950: #2e1065;
+  --violet-50: #ecfdf5;
+  --violet-100: #d1fae5;
+  --violet-200: #a7f3d0;
+  --violet-300: #6ee7b7;
+  --violet-400: #34d399;
+  --violet-500: #10b981;
+  --violet-600: #059669;
+  --violet-700: #047857;
+  --violet-800: #065f46;
+  --violet-900: #064e3b;
+  --violet-950: #022c22;
 
-  --surface-0: #06050e;
-  --surface-1: #0c0b18;
-  --surface-2: #13112a;
-  --surface-3: #1a1640;
+  --surface-0: #021a14;
+  --surface-1: #052e16;
+  --surface-2: #064e3b;
+  --surface-3: #0f766e;
 
-  --text-primary: #f0ecff;
-  --text-secondary: #a8a0c8;
-  --text-muted: #6b6488;
+  --text-primary: #ecfdf5;
+  --text-secondary: #a7f3d0;
+  --text-muted: #6ee7b7;
+  --accent-1: #c7632a;
+  --accent-2: #c72c2a;
 
   --radius-sm: 8px;
   --radius-md: 16px;
@@ -169,11 +180,11 @@ body::before {
 }
 
 .nav.scrolled {
-  background: rgba(6, 5, 14, 0.8);
+  background: rgba(2, 44, 34, 0.82);
   backdrop-filter: blur(24px) saturate(1.4);
   -webkit-backdrop-filter: blur(24px) saturate(1.4);
   padding: 14px 48px;
-  border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+  border-bottom: 1px solid rgba(52, 211, 153, 0.2);
 }
 
 .nav-logo {
@@ -183,9 +194,11 @@ body::before {
   text-decoration: none;
 }
 
-.nav-logo svg {
-  width: 36px;
-  height: 36px;
+.nav-logo .nav-animated-logo {
+  width: 168px;
+  height: auto;
+  display: block;
+  overflow: visible;
 }
 
 .nav-logo-text {
@@ -220,12 +233,12 @@ body::before {
   left: 0;
   width: 0;
   height: 1.5px;
-  background: var(--violet-500);
+  background: var(--accent-1);
   transition: width 0.3s var(--ease-out-expo);
 }
 
 .nav-links a:hover {
-  color: var(--text-primary);
+  color: #f6d0b6;
 }
 
 .nav-links a:hover::after {
@@ -234,7 +247,7 @@ body::before {
 
 .nav-cta {
   padding: 10px 24px;
-  background: var(--violet-600);
+  background: linear-gradient(135deg, var(--accent-1), #da8450);
   color: white;
   border: none;
   border-radius: 100px;
@@ -247,9 +260,9 @@ body::before {
 }
 
 .nav-cta:hover {
-  background: var(--violet-500);
+  background: linear-gradient(135deg, #d2733a, var(--accent-1));
   transform: translateY(-1px);
-  box-shadow: 0 8px 32px rgba(124, 58, 237, 0.3);
+  box-shadow: 0 8px 32px rgba(199, 99, 42, 0.35);
 }
 
 /* Mobile menu */
@@ -292,24 +305,47 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 70%),
-    radial-gradient(ellipse 50% 60% at 80% 60%, rgba(139, 92, 246, 0.1) 0%, transparent 70%),
-    radial-gradient(ellipse 80% 40% at 50% 80%, rgba(196, 181, 253, 0.05) 0%, transparent 60%);
+    radial-gradient(ellipse 60% 50% at 20% 30%, rgba(5, 150, 105, 0.17) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 60% at 80% 60%, rgba(16, 185, 129, 0.11) 0%, transparent 70%),
+    radial-gradient(ellipse 80% 40% at 50% 80%, rgba(167, 243, 208, 0.07) 0%, transparent 60%);
   z-index: 0;
 }
 
-/* Floating grid lines */
+/* Topographic contour lines */
 .hero::after {
   content: '';
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
-  background-size: 80px 80px;
+  background:
+    radial-gradient(ellipse 140% 90% at 50% 85%, transparent 0 42%, rgba(52, 211, 153, 0.08) 42.2% 42.8%, transparent 43% 47%, rgba(52, 211, 153, 0.07) 47.2% 47.8%, transparent 48% 52%, rgba(52, 211, 153, 0.06) 52.2% 52.8%, transparent 53%),
+    radial-gradient(ellipse 120% 80% at 50% 15%, transparent 0 38%, rgba(16, 185, 129, 0.06) 38.2% 38.8%, transparent 39% 43%, rgba(16, 185, 129, 0.05) 43.2% 43.8%, transparent 44%);
   z-index: 0;
   mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
   -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, black 20%, transparent 70%);
+}
+
+.hero-line-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: linear-gradient(96deg, transparent 0%, transparent 48.4%, rgba(199, 99, 42, 0.03) 49.2%, rgba(199, 99, 42, 0.88) 49.6%, rgba(199, 99, 42, 0.03) 50.0%, transparent 50.8%, transparent 100%);
+  background-size: 220% 100%;
+  background-position: -160% 0;
+  mix-blend-mode: screen;
+  opacity: 0.72;
+  animation: heroLineFlashSweep 12.5s linear infinite;
+  mask-image:
+    radial-gradient(ellipse 140% 90% at 50% 85%, transparent 0 42%, black 42.2% 42.8%, transparent 43% 47%, black 47.2% 47.8%, transparent 48% 52%, black 52.2% 52.8%, transparent 53%),
+    radial-gradient(ellipse 120% 80% at 50% 15%, transparent 0 38%, black 38.2% 38.8%, transparent 39% 43%, black 43.2% 43.8%, transparent 44%);
+  -webkit-mask-image:
+    radial-gradient(ellipse 140% 90% at 50% 85%, transparent 0 42%, black 42.2% 42.8%, transparent 43% 47%, black 47.2% 47.8%, transparent 48% 52%, black 52.2% 52.8%, transparent 53%),
+    radial-gradient(ellipse 120% 80% at 50% 15%, transparent 0 38%, black 38.2% 38.8%, transparent 39% 43%, black 43.2% 43.8%, transparent 44%);
+}
+
+@keyframes heroLineFlashSweep {
+  0% { background-position: -160% 0; }
+  100% { background-position: 160% 0; }
 }
 
 .hero-content {
@@ -323,38 +359,74 @@ body::before {
   margin-bottom: 40px;
   opacity: 0;
   animation: fadeSlideUp 1s var(--ease-out-expo) 0.2s forwards;
+  position: relative;
+  display: flex;
+  justify-content: center;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 20px;
-  background: rgba(124, 58, 237, 0.1);
-  border: 1px solid rgba(124, 58, 237, 0.2);
-  border-radius: 100px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--violet-300);
-  margin-bottom: 32px;
-  opacity: 0;
-  animation: fadeSlideUp 1s var(--ease-out-expo) 0.3s forwards;
-}
-
-.hero-badge::before {
+/* Soft gradient halo behind the logo */
+.hero-mark::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--violet-400);
-  animation: pulse 2s ease infinite;
+  position: absolute;
+  left: 50%;
+  top: 46%;
+  width: 320px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(ellipse at center, rgba(16, 185, 129, 0.35) 0%, rgba(16, 185, 129, 0.12) 38%, transparent 72%);
+  filter: blur(22px);
+  z-index: -1;
 }
 
-@keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.8); }
+.hero-logo-animated {
+  display: block;
+  width: min(420px, 82vw);
+  height: auto;
+  overflow: visible;
+}
+
+/* Animated logo classes (amber SCALE variant) */
+.tsa-chev-1, .tsa-chev-2, .tsa-chev-3 {
+  transform-origin: 52px 18px;
+  transform-box: fill-box;
+}
+.tsa-chev-1 { animation: tsa-chev-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both; }
+.tsa-chev-2 { animation: tsa-chev-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both; }
+.tsa-chev-3 { animation: tsa-chev-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.44s both; }
+@keyframes tsa-chev-rise {
+  from { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(12px); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); transform: translateY(0); }
+}
+.tsa-baseline-main {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  animation: tsa-draw-line 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.75s forwards;
+}
+.tsa-baseline-subtle {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  animation: tsa-draw-line 0.5s cubic-bezier(0.22, 1, 0.36, 1) 0.82s forwards;
+}
+@keyframes tsa-draw-line { to { stroke-dashoffset: 0; } }
+.tsa-text-talent { animation: tsa-slide-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) 1s both; }
+@keyframes tsa-slide-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+.tsa-scale-s { animation: tsa-letter-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s both; }
+.tsa-scale-c { animation: tsa-letter-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.44s both; }
+.tsa-scale-a { animation: tsa-letter-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.53s both; }
+.tsa-scale-l { animation: tsa-letter-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.62s both; }
+.tsa-scale-e { animation: tsa-letter-pop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) 1.71s both; }
+@keyframes tsa-letter-pop {
+  from { opacity: 0; transform: translateY(8px) scale(0.8); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.tsa-apex-glow { animation: tsa-glow-pulse 1.8s ease-in-out 2.2s both; }
+@keyframes tsa-glow-pulse {
+  0% { opacity: 0; r: 0; }
+  40% { opacity: 0.6; r: 18; }
+  100% { opacity: 0; r: 28; }
 }
 
 .hero h1 {
@@ -369,7 +441,7 @@ body::before {
 }
 
 .hero h1 .gradient-text {
-  background: linear-gradient(135deg, var(--violet-400), var(--violet-300), #e9d5ff);
+  background: linear-gradient(135deg, var(--violet-400), var(--violet-300), #f6d0b6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -391,13 +463,24 @@ body::before {
   gap: 16px;
   justify-content: center;
   align-items: center;
+  margin-bottom: 18px;
   opacity: 0;
   animation: fadeSlideUp 1s var(--ease-out-expo) 0.9s forwards;
 }
 
+.hero-scroll {
+  margin-top: 12px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  opacity: 0;
+  animation: fadeSlideUp 1s var(--ease-out-expo) 1.2s forwards;
+}
+
 .btn-primary {
   padding: 16px 36px;
-  background: var(--violet-600);
+  background: linear-gradient(135deg, var(--accent-1), #d67d47);
   color: white;
   border: none;
   border-radius: 100px;
@@ -421,7 +504,7 @@ body::before {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.4);
+  box-shadow: 0 12px 40px rgba(199, 99, 42, 0.45);
 }
 
 .btn-primary:hover::before {
@@ -432,7 +515,7 @@ body::before {
   padding: 16px 36px;
   background: transparent;
   color: var(--text-secondary);
-  border: 1px solid rgba(124, 58, 237, 0.3);
+  border: 1px solid rgba(5, 150, 105, 0.34);
   border-radius: 100px;
   font-size: 15px;
   font-weight: 500;
@@ -442,52 +525,20 @@ body::before {
 }
 
 .btn-secondary:hover {
-  border-color: var(--violet-500);
-  color: var(--text-primary);
-  background: rgba(124, 58, 237, 0.05);
+  border-color: var(--accent-1);
+  color: #f6d0b6;
+  background: rgba(199, 99, 42, 0.08);
 }
 
-/* Scroll indicator */
-.hero-scroll {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  opacity: 0;
-  animation: fadeSlideUp 1s var(--ease-out-expo) 1.2s forwards;
-}
-
-.hero-scroll span {
-  font-size: 10px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--text-muted);
-}
-
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--violet-600), transparent);
-  animation: scrollPulse 2s ease infinite;
-}
-
-@keyframes scrollPulse {
-  0% { opacity: 1; transform: scaleY(1); }
-  50% { opacity: 0.3; transform: scaleY(0.6); }
-  100% { opacity: 1; transform: scaleY(1); }
-}
+/* Hero scroll indicator */
 
 /* ═══════════════════════════════════════════
    TRUST STRIP / SOCIAL PROOF
    ═══════════════════════════════════════════ */
 .trust-strip {
   padding: 60px 48px;
-  border-top: 1px solid rgba(124, 58, 237, 0.08);
-  border-bottom: 1px solid rgba(124, 58, 237, 0.08);
+  border-top: 1px solid rgba(16, 185, 129, 0.15);
+  border-bottom: 1px solid rgba(16, 185, 129, 0.15);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -497,32 +548,84 @@ body::before {
   font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: 32px;
+  color: var(--accent-1);
+  margin-bottom: 18px;
+  font-weight: 600;
 }
 
 .trust-logos {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 56px;
-  flex-wrap: wrap;
-  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  max-width: 980px;
   margin: 0 auto;
 }
 
-.trust-logo {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-muted);
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
-  letter-spacing: -0.5px;
+.trust-logo-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 16px;
+  background: rgba(2, 44, 34, 0.55);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 16px;
+  transition: transform 0.3s var(--ease-out-expo), border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.trust-logo:hover {
-  opacity: 0.7;
+.trust-logo-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(199, 99, 42, 0.55);
+  box-shadow: 0 10px 26px rgba(199, 99, 42, 0.2);
+  background: rgba(2, 44, 34, 0.72);
+}
+
+.trust-logo-card img {
+  width: auto;
+  height: 22px;
+  max-width: 132px;
+  filter: brightness(0) invert(1);
+  opacity: 0.75;
+}
+
+.trust-logo-fallback {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text-secondary);
+}
+
+.trust-strip-sub {
+  color: var(--text-secondary);
+  max-width: 620px;
+  margin: 0 auto 26px;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.trust-stats {
+  margin-top: 22px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(16, 185, 129, 0.16);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.trust-stat-number {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--accent-1);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.trust-stat-label {
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
 }
 
 /* ═══════════════════════════════════════════
@@ -545,7 +648,7 @@ body::before {
   font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--violet-400);
+  color: var(--accent-1);
   margin-bottom: 20px;
   font-weight: 600;
 }
@@ -554,7 +657,7 @@ body::before {
   content: '';
   width: 24px;
   height: 1.5px;
-  background: var(--violet-600);
+  background: var(--accent-1);
 }
 
 .section-title {
@@ -590,7 +693,7 @@ body::before {
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(ellipse 60% 40% at 30% 50%, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+  background: radial-gradient(ellipse 60% 40% at 30% 50%, rgba(5, 150, 105, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -624,7 +727,7 @@ body::before {
   left: -12px;
   right: 12px;
   bottom: 12px;
-  border: 1.5px solid rgba(124, 58, 237, 0.2);
+  border: 1.5px solid rgba(16, 185, 129, 0.24);
   border-radius: var(--radius-lg);
   z-index: 0;
 }
@@ -636,7 +739,7 @@ body::before {
   right: -20px;
   width: 120px;
   height: 120px;
-  background: radial-gradient(circle, rgba(124, 58, 237, 0.15), transparent 70%);
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.18), transparent 70%);
   border-radius: 50%;
   z-index: 0;
 }
@@ -679,7 +782,7 @@ body::before {
   gap: 24px;
   margin-top: 40px;
   padding-top: 40px;
-  border-top: 1px solid rgba(124, 58, 237, 0.12);
+  border-top: 1px solid rgba(16, 185, 129, 0.16);
 }
 
 .stat-number {
@@ -708,7 +811,7 @@ body::before {
 
 .service-card {
   background: rgba(19, 17, 42, 0.6);
-  border: 1px solid rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.16);
   border-radius: var(--radius-lg);
   padding: 40px 32px;
   transition: all 0.4s var(--ease-out-expo);
@@ -729,7 +832,7 @@ body::before {
 }
 
 .service-card:hover {
-  border-color: rgba(124, 58, 237, 0.25);
+  border-color: rgba(16, 185, 129, 0.28);
   transform: translateY(-4px);
   background: rgba(19, 17, 42, 0.8);
 }
@@ -742,7 +845,7 @@ body::before {
   width: 48px;
   height: 48px;
   border-radius: 12px;
-  background: rgba(124, 58, 237, 0.1);
+  background: rgba(5, 150, 105, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -788,7 +891,7 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 50% 60% at 80% 40%, rgba(124, 58, 237, 0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 50% 60% at 80% 40%, rgba(16, 185, 129, 0.08) 0%, transparent 70%);
 }
 
 .diff-inner {
@@ -811,7 +914,7 @@ body::before {
   text-transform: uppercase;
   margin-bottom: 32px;
   padding-bottom: 16px;
-  border-bottom: 1.5px solid rgba(124, 58, 237, 0.2);
+  border-bottom: 1.5px solid rgba(16, 185, 129, 0.24);
 }
 
 .diff-col-title.positive {
@@ -842,7 +945,7 @@ body::before {
 }
 
 .diff-icon.check {
-  background: rgba(124, 58, 237, 0.15);
+  background: rgba(5, 150, 105, 0.16);
   color: var(--violet-400);
   font-size: 14px;
 }
@@ -907,7 +1010,7 @@ body::before {
 .role-tag {
   padding: 10px 24px;
   background: rgba(19, 17, 42, 0.6);
-  border: 1px solid rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.18);
   border-radius: 100px;
   font-size: 13px;
   color: var(--text-secondary);
@@ -919,7 +1022,7 @@ body::before {
 .role-tag:hover {
   border-color: var(--violet-500);
   color: var(--text-primary);
-  background: rgba(124, 58, 237, 0.08);
+  background: rgba(5, 150, 105, 0.1);
 }
 
 /* ═══════════════════════════════════════════
@@ -936,7 +1039,7 @@ body::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.08), transparent 60%);
+  background: radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1), transparent 60%);
 }
 
 .quote-inner {
@@ -968,6 +1071,13 @@ body::before {
   font-weight: 600;
 }
 
+.quote-author {
+  margin-top: 18px;
+  color: var(--text-secondary);
+  font-size: 15px;
+  letter-spacing: 0.2px;
+}
+
 /* ═══════════════════════════════════════════
    CONTACT SECTION
    ═══════════════════════════════════════════ */
@@ -981,8 +1091,8 @@ body::before {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 50% 50% at 30% 70%, rgba(124, 58, 237, 0.08) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 40% at 70% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+    radial-gradient(ellipse 50% 50% at 30% 70%, rgba(5, 150, 105, 0.1) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 70% 30%, rgba(16, 185, 129, 0.07) 0%, transparent 70%);
 }
 
 .contact-inner {
@@ -1018,7 +1128,7 @@ body::before {
 .form-input,
 .form-textarea {
   background: rgba(19, 17, 42, 0.6);
-  border: 1px solid rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.18);
   border-radius: var(--radius-sm);
   padding: 14px 18px;
   color: var(--text-primary);
@@ -1031,12 +1141,22 @@ body::before {
 .form-input:focus,
 .form-textarea:focus {
   border-color: var(--violet-500);
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.14);
 }
 
 .form-textarea {
   resize: vertical;
   min-height: 140px;
+}
+
+.form-success {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #f6d0b6;
+  background: rgba(199, 99, 42, 0.12);
+  border: 1px solid rgba(199, 99, 42, 0.35);
+  border-radius: 10px;
+  padding: 10px 12px;
 }
 
 .form-row {
@@ -1062,7 +1182,7 @@ body::before {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: rgba(124, 58, 237, 0.1);
+  background: rgba(5, 150, 105, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1107,7 +1227,7 @@ body::before {
    ═══════════════════════════════════════════ */
 .footer {
   padding: 40px 48px;
-  border-top: 1px solid rgba(124, 58, 237, 0.08);
+  border-top: 1px solid rgba(16, 185, 129, 0.12);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1124,6 +1244,66 @@ body::before {
   font-size: 12px;
   color: var(--text-muted);
   opacity: 0.5;
+}
+
+.footer-link {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-link:hover {
+  color: #f6d0b6;
+}
+
+.floating-linkedin {
+  position: fixed;
+  right: 24px;
+  bottom: 92px;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  transition: transform 0.25s ease;
+}
+
+.floating-linkedin:hover {
+  transform: translateY(-2px);
+}
+
+.floating-linkedin img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.floating-whatsapp {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #1da851);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+  z-index: 1200;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.floating-whatsapp:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 16px 36px rgba(37, 211, 102, 0.55);
+}
+
+.floating-whatsapp svg {
+  width: 30px;
+  height: 30px;
 }
 
 /* ═══════════════════════════════════════════
@@ -1156,6 +1336,15 @@ body::before {
   .stat-number { font-size: 28px; }
   .form-row { grid-template-columns: 1fr; }
   .hero-actions { flex-direction: column; }
+  .nav-logo .nav-animated-logo { width: 138px; }
+  .hero-logo-animated { width: min(320px, 90vw); }
+  .hero-mark::before { width: 280px; height: 150px; }
+  .trust-logos { grid-template-columns: 1fr; }
+  .trust-logo-card img { max-width: 120px; }
+  .trust-stats { grid-template-columns: 1fr; }
+  .floating-linkedin { right: 16px; bottom: 80px; width: 54px; height: 54px; }
+  .floating-linkedin img { width: 54px; height: 54px; }
+  .floating-whatsapp { right: 16px; bottom: 16px; width: 54px; height: 54px; }
   
   .footer { flex-direction: column; gap: 12px; text-align: center; }
 }
@@ -1169,34 +1358,10 @@ body::before {
 }
 
 .converge-icon svg {
-  filter: drop-shadow(0 0 20px rgba(124, 58, 237, 0.3));
+  filter: drop-shadow(0 0 20px rgba(16, 185, 129, 0.36));
 }
 
-/* Floating particles */
-.particle-field {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.particle {
-  position: absolute;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: var(--violet-500);
-  opacity: 0;
-  animation: floatParticle 6s ease-in-out infinite;
-}
-
-@keyframes floatParticle {
-  0% { opacity: 0; transform: translateY(0) scale(0); }
-  20% { opacity: 0.6; transform: translateY(-20px) scale(1); }
-  80% { opacity: 0.3; transform: translateY(-80px) scale(0.8); }
-  100% { opacity: 0; transform: translateY(-120px) scale(0); }
-}
+/* Micro-grain overlay retained globally via body::before */
 </style>
 </head>
 <body>
@@ -1204,20 +1369,36 @@ body::before {
 <!-- ═══════════ NAVIGATION ═══════════ -->
 <nav class="nav" id="nav">
   <a href="#" class="nav-logo">
-    <svg viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+    <svg class="nav-animated-logo" width="340" height="96" viewBox="0 0 340 96" xmlns="http://www.w3.org/2000/svg" aria-label="Talent Scale logo">
       <defs>
-        <linearGradient id="navG" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stop-color="#7c3aed"/>
-          <stop offset="100%" stop-color="#c4b5fd"/>
+        <linearGradient id="navtsa-gd" x1="0" y1="1" x2="0.5" y2="0">
+          <stop offset="0%" stop-color="#059669"/>
+          <stop offset="100%" stop-color="#34d399"/>
         </linearGradient>
+        <radialGradient id="navtsa-glow" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#34d399" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+        </radialGradient>
+        <filter id="navtsa-soft-glow">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
       </defs>
-      <g opacity="0.3"><ellipse cx="6" cy="12" rx="2.5" ry="2.5" fill="#a78bfa"/><rect x="4" y="15" width="5" height="10" rx="2.5" fill="#a78bfa"/></g>
-      <g opacity="0.5"><ellipse cx="13" cy="8" rx="3" ry="3" fill="#8b5cf6"/><rect x="10" y="12" width="6" height="12" rx="3" fill="#8b5cf6"/></g>
-      <g opacity="0.85"><ellipse cx="21" cy="6" rx="3.5" ry="3.5" fill="url(#navG)"/><rect x="17.5" y="10" width="7" height="14" rx="3.5" fill="url(#navG)"/></g>
-      <g opacity="0.5"><ellipse cx="29" cy="10" rx="2.8" ry="2.8" fill="#c4b5fd"/><rect x="26.5" y="13.5" width="5" height="11" rx="2.5" fill="#c4b5fd" opacity="0.6"/></g>
-      <path d="M4,30 C4,25 32,25 32,30" stroke="url(#navG)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+      <path class="tsa-chev-1" d="M52,10 L84,52 L20,52 Z" fill="url(#navtsa-gd)" opacity="0.28"/>
+      <path class="tsa-chev-2" d="M52,26 L76,58 L28,58 Z" fill="url(#navtsa-gd)" opacity="0.58"/>
+      <path class="tsa-chev-3" d="M52,40 L66,64 L38,64 Z" fill="url(#navtsa-gd)"/>
+      <circle class="tsa-apex-glow" cx="52" cy="10" r="0" fill="url(#navtsa-glow)" filter="url(#navtsa-soft-glow)"/>
+      <line class="tsa-baseline-main" x1="8" y1="80" x2="98" y2="80" stroke="#C7632A" stroke-width="2.5" stroke-linecap="round"/>
+      <line class="tsa-baseline-subtle" x1="8" y1="73" x2="74" y2="73" stroke="#C7632A" stroke-width="1" opacity="0.35" stroke-linecap="round"/>
+      <text class="tsa-text-talent" x="116" y="62" font-family="'Outfit',sans-serif" font-size="36" font-weight="800" fill="#ecfdf5" letter-spacing="-0.5">TALENT</text>
+      <g font-family="'Outfit',sans-serif" font-size="26" font-weight="300" fill="#C7632A">
+        <text class="tsa-scale-s" x="118" y="86" transform-origin="118 86" transform-box="fill-box">S</text>
+        <text class="tsa-scale-c" x="136" y="86" transform-origin="136 86" transform-box="fill-box">C</text>
+        <text class="tsa-scale-a" x="153" y="86" transform-origin="153 86" transform-box="fill-box">A</text>
+        <text class="tsa-scale-l" x="172" y="86" transform-origin="172 86" transform-box="fill-box">L</text>
+        <text class="tsa-scale-e" x="186" y="86" transform-origin="186 86" transform-box="fill-box">E</text>
+      </g>
     </svg>
-    <span class="nav-logo-text">Talent Scale</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -1233,38 +1414,40 @@ body::before {
 
 <!-- ═══════════ HERO ═══════════ -->
 <section class="hero" id="hero">
-  <div class="particle-field">
-    <div class="particle" style="left:15%;top:60%;animation-delay:0s"></div>
-    <div class="particle" style="left:25%;top:70%;animation-delay:1.2s"></div>
-    <div class="particle" style="left:55%;top:55%;animation-delay:2.5s"></div>
-    <div class="particle" style="left:75%;top:65%;animation-delay:0.8s"></div>
-    <div class="particle" style="left:85%;top:75%;animation-delay:3.2s"></div>
-    <div class="particle" style="left:40%;top:80%;animation-delay:1.8s"></div>
-    <div class="particle" style="left:65%;top:45%;animation-delay:4s"></div>
-    <div class="particle" style="left:35%;top:50%;animation-delay:2s;background:var(--violet-300)"></div>
-  </div>
-
+  <div class="hero-line-flash"></div>
   <div class="hero-content">
     <div class="hero-mark converge-icon">
-      <svg width="80" height="80" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+      <svg class="hero-logo-animated" width="340" height="96" viewBox="0 0 340 96" xmlns="http://www.w3.org/2000/svg">
         <defs>
-          <linearGradient id="heroG" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#7c3aed"/>
-            <stop offset="100%" stop-color="#c4b5fd"/>
+          <linearGradient id="tsa-gd" x1="0" y1="1" x2="0.5" y2="0">
+            <stop offset="0%" stop-color="#059669"/>
+            <stop offset="100%" stop-color="#34d399"/>
           </linearGradient>
+          <radialGradient id="tsa-glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#34d399" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#34d399" stop-opacity="0"/>
+          </radialGradient>
+          <filter id="tsa-soft-glow">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
         </defs>
-        <g opacity="0.3"><ellipse cx="8" cy="22" rx="4" ry="4" fill="#a78bfa"/><rect x="5" y="27" width="6" height="16" rx="3" fill="#a78bfa"/></g>
-        <g opacity="0.5"><ellipse cx="18" cy="14" rx="4.5" ry="4.5" fill="#8b5cf6"/><rect x="14" y="20" width="8" height="18" rx="4" fill="#8b5cf6"/></g>
-        <g opacity="0.9"><ellipse cx="30" cy="8" rx="5.5" ry="5.5" fill="url(#heroG)"/><rect x="25" y="15" width="10" height="22" rx="5" fill="url(#heroG)"/></g>
-        <g opacity="0.5"><ellipse cx="42" cy="14" rx="4.5" ry="4.5" fill="#c4b5fd"/><rect x="38" y="20" width="8" height="18" rx="4" fill="#c4b5fd" opacity="0.6"/></g>
-        <g opacity="0.3"><ellipse cx="52" cy="22" rx="4" ry="4" fill="#a78bfa"/><rect x="49" y="27" width="6" height="16" rx="3" fill="#a78bfa"/></g>
-        <path d="M5,48 C5,38 55,38 55,48" stroke="url(#heroG)" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <path d="M12,52 C12,44 48,44 48,52" stroke="#a78bfa" stroke-width="1" fill="none" stroke-linecap="round" opacity="0.3"/>
-        <circle cx="30" cy="54" r="2.5" fill="#c4b5fd" opacity="0.5"/>
+        <path class="tsa-chev-1" d="M52,10 L84,52 L20,52 Z" fill="url(#tsa-gd)" opacity="0.28"/>
+        <path class="tsa-chev-2" d="M52,26 L76,58 L28,58 Z" fill="url(#tsa-gd)" opacity="0.58"/>
+        <path class="tsa-chev-3" d="M52,40 L66,64 L38,64 Z" fill="url(#tsa-gd)"/>
+        <circle class="tsa-apex-glow" cx="52" cy="10" r="0" fill="url(#tsa-glow)" filter="url(#tsa-soft-glow)"/>
+        <line class="tsa-baseline-main" x1="8" y1="80" x2="98" y2="80" stroke="#C7632A" stroke-width="2.5" stroke-linecap="round"/>
+        <line class="tsa-baseline-subtle" x1="8" y1="73" x2="74" y2="73" stroke="#C7632A" stroke-width="1" opacity="0.35" stroke-linecap="round"/>
+        <text class="tsa-text-talent" x="116" y="62" font-family="'Outfit',sans-serif" font-size="36" font-weight="800" fill="#ecfdf5" letter-spacing="-0.5">TALENT</text>
+        <g font-family="'Outfit',sans-serif" font-size="26" font-weight="300" fill="#C7632A">
+          <text class="tsa-scale-s" x="118" y="86" transform-origin="118 86" transform-box="fill-box">S</text>
+          <text class="tsa-scale-c" x="136" y="86" transform-origin="136 86" transform-box="fill-box">C</text>
+          <text class="tsa-scale-a" x="153" y="86" transform-origin="153 86" transform-box="fill-box">A</text>
+          <text class="tsa-scale-l" x="172" y="86" transform-origin="172 86" transform-box="fill-box">L</text>
+          <text class="tsa-scale-e" x="186" y="86" transform-origin="186 86" transform-box="fill-box">E</text>
+        </g>
       </svg>
     </div>
-
-    <div class="hero-badge">Executive Recruitment</div>
 
     <h1>
       Helping Disruptors Hire<br>
@@ -1277,28 +1460,58 @@ body::before {
     </p>
 
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Start a Conversation</a>
+      <a href="#contact" class="btn-primary">Let's Talk</a>
       <a href="#about" class="btn-secondary">Meet Jeff</a>
     </div>
+    <div class="hero-scroll">Scroll</div>
   </div>
 
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
 </section>
 
 <!-- ═══════════ TRUST STRIP ═══════════ -->
 <div class="trust-strip reveal">
-  <div class="trust-strip-label">Trusted by innovative companies</div>
+  <div class="trust-strip-label">Client Portfolio</div>
+  <h2 class="section-title reveal" style="font-size:clamp(28px,3.5vw,44px);max-width:860px;margin:0 auto 14px;">I've helped build teams at the UK's best tech companies</h2>
+  <p class="trust-strip-sub">From fintech unicorns to DTC disruptors — a selection of the innovative companies I've placed exceptional talent at.</p>
   <div class="trust-logos">
-    <span class="trust-logo">Deliveroo</span>
-    <span class="trust-logo">Bloom & Wild</span>
-    <span class="trust-logo">Starling Bank</span>
-    <span class="trust-logo">Wise</span>
-    <span class="trust-logo">Depop</span>
-    <span class="trust-logo">GoCardless</span>
-    <span class="trust-logo">Monzo</span>
+    <div class="trust-logo-card">
+      <img src="https://logo.clearbit.com/deliveroo.co.uk" alt="Deliveroo logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <span class="trust-logo-fallback">Deliveroo</span>
+    </div>
+    <div class="trust-logo-card">
+      <img src="https://logo.clearbit.com/monzo.com" alt="Monzo logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <span class="trust-logo-fallback">Monzo</span>
+    </div>
+    <div class="trust-logo-card">
+      <img src="https://logo.clearbit.com/wise.com" alt="Wise logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <span class="trust-logo-fallback">Wise</span>
+    </div>
+    <div class="trust-logo-card">
+      <img src="https://logo.clearbit.com/depop.com" alt="Depop logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <span class="trust-logo-fallback">Depop</span>
+    </div>
+    <div class="trust-logo-card">
+      <img src="https://logo.clearbit.com/bloomandwild.com" alt="Bloom & Wild logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <span class="trust-logo-fallback">Bloom & Wild</span>
+    </div>
+    <div class="trust-logo-card">
+      <img src="https://logo.clearbit.com/cazoo.co.uk" alt="Cazoo logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <span class="trust-logo-fallback">Cazoo</span>
+    </div>
+  </div>
+  <div class="trust-stats">
+    <div>
+      <div class="trust-stat-number">500+</div>
+      <div class="trust-stat-label">Placements across these companies</div>
+    </div>
+    <div>
+      <div class="trust-stat-number">20+</div>
+      <div class="trust-stat-label">Years building these networks</div>
+    </div>
+    <div>
+      <div class="trust-stat-number">100%</div>
+      <div class="trust-stat-label">Confidentiality guaranteed</div>
+    </div>
   </div>
 </div>
 
@@ -1312,13 +1525,13 @@ body::before {
       <div class="about-name reveal">Jeff Hardie</div>
       <h2 class="about-headline reveal">I love people. I love solving problems for companies.</h2>
       <p class="about-text reveal">
-        I'm a highly experienced and very connected recruitment director with 20+ years of commercial expertise throughout the UK and Europe. I've built teams multiple times across Start-Ups and Scale-Ups in Health, Finance, Media, Technology, and SaaS.
+        With over 20 years of recruitment experience across the UK and Europe, I've built a network that spans the most ambitious start-ups and scale-ups in Health, Fintech, Media, Technology and SaaS — placing senior leaders who genuinely move the needle.
       </p>
       <p class="about-text reveal">
-        I've advised founders and executive teams extensively on role positioning, organisational design and market insight. I have extensive experience working with investors across VC, Private Equity and countless founders of tech companies.
+        I work closely with founders and executive teams on role positioning, organisational design and talent strategy. I have deep relationships across the VC and Private Equity landscape, and with the founders of some of the UK's most successful tech companies.
       </p>
       <p class="about-text reveal">
-        My reputation is everything. The buck stops with me and I can be checked out.
+        My reputation is the foundation of everything I do. Every client and every candidate I've worked with can speak to how I operate — and that track record is something I'm genuinely proud of.
       </p>
 
       <div class="about-stats stagger-children">
@@ -1345,7 +1558,7 @@ body::before {
     <div class="section-label reveal">What I Do</div>
     <h2 class="section-title reveal">Strategic recruitment<br>for ambitious companies</h2>
     <p class="section-desc reveal">
-      I specialise in hiring key leadership roles, helping founders and their teams on critical strategic hires that drive real business impact.
+      I specialise in placing senior leaders — helping founders and executive teams make the strategic hires that define their company's next chapter.
     </p>
   </div>
 
@@ -1370,8 +1583,8 @@ body::before {
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
       </div>
-      <h3 class="service-title">Market Insight</h3>
-      <p class="service-desc">Strategic advisory on role positioning, compensation benchmarking, and organisational design. I've got my finger on the pulse.</p>
+      <h3 class="service-title">Market Intelligence</h3>
+      <p class="service-desc">Strategic counsel on role design, salary benchmarking and talent market dynamics — so you make informed decisions, not just fast ones.</p>
     </div>
 
     <div class="service-card reveal">
@@ -1415,32 +1628,32 @@ body::before {
         <div class="diff-item reveal">
           <div class="diff-icon check">✓</div>
           <div>
-            <div class="diff-item-title">20+ Years Experience</div>
-            <div class="diff-item-desc">Outstanding reputation with an enviable client and candidate network built over two decades.</div>
+            <div class="diff-item-title">20+ Years of Real Access</div>
+            <div class="diff-item-desc">A network built over two decades of senior placements — giving access to candidates and conversations that most recruiters simply can't reach.</div>
           </div>
         </div>
 
         <div class="diff-item reveal">
           <div class="diff-icon check">✓</div>
           <div>
-            <div class="diff-item-title">Deep Industry Expertise</div>
-            <div class="diff-item-desc">Multiple sector and channel experience across Marketing, Product, Sales, Technology, and more.</div>
+            <div class="diff-item-title">Deep Functional Expertise</div>
+            <div class="diff-item-desc">Specialist knowledge across Marketing, Product, Sales and Technology — shaped by thousands of conversations with senior leaders at every growth stage.</div>
           </div>
         </div>
 
         <div class="diff-item reveal">
           <div class="diff-icon check">✓</div>
           <div>
-            <div class="diff-item-title">Honest & Engaging</div>
-            <div class="diff-item-desc">I listen. I'm upfront about what I can and can't do. I'm an expert in my core areas. I'm fun. I deliver.</div>
+            <div class="diff-item-title">Direct & Straightforward</div>
+            <div class="diff-item-desc">I listen carefully and I'm honest about what I can and can't do. No spin, no overselling — just clear thinking and consistent follow-through.</div>
           </div>
         </div>
 
         <div class="diff-item reveal">
           <div class="diff-icon check">✓</div>
           <div>
-            <div class="diff-item-title">Proven, Checkable Results</div>
-            <div class="diff-item-desc">My record speaks for itself. My reputation is everything — and it can be verified.</div>
+            <div class="diff-item-title">A Track Record You Can Verify</div>
+            <div class="diff-item-desc">500+ senior placements over two decades. My clients come back and refer me to others. That's the only measure I care about.</div>
           </div>
         </div>
       </div>
@@ -1451,8 +1664,8 @@ body::before {
         <div class="diff-item reveal">
           <div class="diff-icon x">✗</div>
           <div>
-            <div class="diff-item-title" style="color:var(--text-muted)">Mass Volume Recruiter</div>
-            <div class="diff-item-desc">I haven't built this business based on targets — but on rock solid delivery.</div>
+            <div class="diff-item-title" style="color:var(--text-muted)">A Volume Recruiter</div>
+            <div class="diff-item-desc">I take on mandates I can genuinely deliver on — not everything that comes my way. Volume means nothing without results.</div>
           </div>
         </div>
 
@@ -1460,15 +1673,15 @@ body::before {
           <div class="diff-icon x">✗</div>
           <div>
             <div class="diff-item-title" style="color:var(--text-muted)">Arrogant or Full of Ego</div>
-            <div class="diff-item-desc">No corporate bluster. Just honest, direct conversations about what matters.</div>
+            <div class="diff-item-desc">No corporate bluster. Just honest, direct conversations about what matters to your business.</div>
           </div>
         </div>
 
         <div class="diff-item reveal">
           <div class="diff-icon x">✗</div>
           <div>
-            <div class="diff-item-title" style="color:var(--text-muted)">Unable to Demonstrate Success</div>
-            <div class="diff-item-desc">The buck stops with me. Check me out — see the client portfolio and ask around.</div>
+            <div class="diff-item-title" style="color:var(--text-muted)">An Unknown Quantity</div>
+            <div class="diff-item-desc">Every placement is traceable. My clients can speak directly to how I work — and I actively welcome that scrutiny.</div>
           </div>
         </div>
       </div>
@@ -1483,7 +1696,7 @@ body::before {
       <div class="section-label reveal">Roles I Cover</div>
       <h2 class="section-title reveal">From C-Suite to<br>senior leadership</h2>
       <p class="section-desc reveal">
-        I cover all types of roles for organisations large and small. Here's a snapshot of the searches I've conducted.
+      I work with companies of all sizes — from founder-led start-ups to established corporates. Here's a snapshot of the searches I've run.
       </p>
     </div>
 
@@ -1527,7 +1740,7 @@ body::before {
         <span class="role-tag">Head of Sales</span>
         <span class="role-tag">Head of Content</span>
         <span class="role-tag">Head of Direct Marketing</span>
-        <span class="role-tag">Sales Manager</span>
+        <span class="role-tag">VP Engineering</span>
         <!-- Duplicate -->
         <span class="role-tag">Head of CRM</span>
         <span class="role-tag">Head of Data Science</span>
@@ -1540,7 +1753,7 @@ body::before {
         <span class="role-tag">Head of Sales</span>
         <span class="role-tag">Head of Content</span>
         <span class="role-tag">Head of Direct Marketing</span>
-        <span class="role-tag">Sales Manager</span>
+        <span class="role-tag">VP Engineering</span>
       </div>
     </div>
   </div>
@@ -1551,8 +1764,9 @@ body::before {
   <div class="quote-inner reveal-scale">
     <div class="quote-mark">"</div>
     <p class="quote-text">
-      I have my finger on the pulse and I am <strong>connected</strong>. I don't just fill roles — I find the people who will <strong>transform your business</strong>.
+      The best candidates aren't applying for jobs. They're busy doing exceptional work somewhere else. My job is knowing exactly who they are — and having the relationship to reach them.
     </p>
+    <div class="quote-author">— Jeff Hardie, Founder</div>
   </div>
 </section>
 
@@ -1564,7 +1778,7 @@ body::before {
         <div class="section-label reveal">Get In Touch</div>
         <h2 class="section-title reveal">Let's work<br>together</h2>
         <p class="section-desc reveal">
-          If I can help you or your company find exceptional talent, drop me a line and let's talk.
+          Whether you're building a leadership team or searching for one transformative hire, I'd love to hear about your challenge.
         </p>
       </div>
 
@@ -1601,36 +1815,50 @@ body::before {
             <div class="contact-info-value"><a href="mailto:jeff@talentscale.io">jeff@talentscale.io</a></div>
           </div>
         </div>
+
+        <div class="contact-info-item reveal">
+          <div class="contact-info-icon">
+            <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 2.67 5.66 2 6.5 2h11c.84 0 1.52.67 1.52 1.5v17c0 .83-.68 1.5-1.52 1.5h-11c-.84 0-1.52-.67-1.52-1.5v-17zM8.5 9H11v9H8.5V9zM9.75 8a1.5 1.5 0 110-3 1.5 1.5 0 010 3zM13 9h2.4v1.23h.03c.34-.64 1.16-1.32 2.4-1.32 2.57 0 3.05 1.66 3.05 3.82V18h-2.5v-4.5c0-1.07-.02-2.45-1.52-2.45-1.52 0-1.75 1.15-1.75 2.35V18H13V9z"/></svg>
+          </div>
+          <div>
+            <div class="contact-info-label">LinkedIn</div>
+            <div class="contact-info-value"><a href="https://www.linkedin.com/in/jeffhardietalentscaleuk/" target="_blank" rel="noopener noreferrer">linkedin.com/in/jeffhardietalentscaleuk</a></div>
+          </div>
+        </div>
       </div>
     </div>
 
     <div>
-      <form class="contact-form reveal">
+      <form id="contactForm" class="contact-form reveal" action="https://formspree.io/f/xojnogzv" method="POST" accept-charset="UTF-8">
+        <input type="hidden" name="_subject" value="New Talent Scale enquiry">
+        <input type="hidden" name="_replyto" value="jeff@talentscale.io">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">First Name</label>
-            <input type="text" class="form-input" placeholder="Your first name">
+            <input type="text" class="form-input" name="firstName" placeholder="Your first name" required>
           </div>
           <div class="form-group">
             <label class="form-label">Last Name</label>
-            <input type="text" class="form-input" placeholder="Your last name">
+            <input type="text" class="form-input" name="lastName" placeholder="Your last name" required>
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Email</label>
-          <input type="email" class="form-input" placeholder="your@email.com">
+          <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
         </div>
         <div class="form-group">
           <label class="form-label">Company</label>
-          <input type="text" class="form-input" placeholder="Your company name">
+          <input type="text" class="form-input" name="company" placeholder="Your company name">
         </div>
         <div class="form-group">
           <label class="form-label">Message</label>
-          <textarea class="form-textarea" placeholder="Tell me about the role you're looking to fill..."></textarea>
+          <textarea class="form-textarea" name="message" placeholder="Tell me about the role you're looking to fill..." required></textarea>
         </div>
         <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 8px;">
           Send Message
         </button>
+        <div id="formSuccessMessage" class="form-success" style="display:none;">Thank you and I will be in touch soon</div>
       </form>
     </div>
   </div>
@@ -1638,9 +1866,20 @@ body::before {
 
 <!-- ═══════════ FOOTER ═══════════ -->
 <footer class="footer">
-  <span class="footer-text">© 2025 Talent Scale. All rights reserved.</span>
+  <span class="footer-text">© 2026 Talent Scale. All rights reserved.</span>
+  <a class="footer-link" href="https://www.linkedin.com/in/jeffhardietalentscaleuk/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   <span class="footer-reg">Reg: 12217924</span>
 </footer>
+
+<a class="floating-linkedin" href="https://www.linkedin.com/in/jeffhardietalentscaleuk/" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile">
+  <img src="linkedin-logo-hd-png-3.png" alt="LinkedIn">
+</a>
+
+<a class="floating-whatsapp" href="https://wa.me/447801149327?text=Hi%20Jeff%2C%20I%27m%20interested%20in%20discussing%20a%20leadership%20hire." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M20.52 3.48A11.9 11.9 0 0012.07 0C5.51 0 .17 5.34.17 11.9c0 2.1.55 4.14 1.6 5.95L0 24l6.33-1.66a11.9 11.9 0 005.74 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.42zM12.08 21.8h-.01a9.93 9.93 0 01-5.07-1.39l-.36-.21-3.76.99 1-3.67-.24-.38a9.9 9.9 0 01-1.52-5.24c0-5.47 4.46-9.92 9.94-9.92 2.65 0 5.14 1.03 7 2.9a9.83 9.83 0 012.9 7c0 5.47-4.46 9.92-9.93 9.92zm5.45-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47a8.98 8.98 0 01-1.66-2.07c-.17-.3-.02-.47.13-.62.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.85 1.2 3.05c.15.2 2.08 3.18 5.04 4.45.7.3 1.25.48 1.68.61.71.23 1.36.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
+  </svg>
+</a>
 
 <!-- ═══════════ SCRIPTS ═══════════ -->
 <script>
@@ -1682,6 +1921,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// AJAX submit for Formspree with inline success message
+const contactForm = document.getElementById('contactForm');
+const formSuccessMessage = document.getElementById('formSuccessMessage');
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(contactForm);
+    try {
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (response.ok) {
+        contactForm.reset();
+        if (formSuccessMessage) {
+          formSuccessMessage.style.display = 'block';
+        }
+      }
+    } catch (err) {
+      // Keep silent to avoid exposing technical errors to visitors.
+    }
+  });
+}
 </script>
 
 </body>

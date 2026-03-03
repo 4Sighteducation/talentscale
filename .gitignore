@@ -17,3 +17,5 @@ web/.env*.local
 # logoideas2-talentscale-abstract.html
 # logoideas3-talentscale-people.html
 # talentscale-v2.html
+
+.vercel
