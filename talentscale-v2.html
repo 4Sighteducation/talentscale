@@ -1171,6 +1171,7 @@ body::before {
   color: var(--text-primary);
   font-family: 'Inter', sans-serif;
   font-size: 15px;
+  width: 100%;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   outline: none;
 }
@@ -1260,6 +1261,7 @@ body::before {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: 48px;
 }
 
 .contact-info-item {
@@ -1267,6 +1269,10 @@ body::before {
   gap: 16px;
   margin-bottom: 32px;
   align-items: flex-start;
+}
+
+.contact-info-item > div {
+  min-width: 0;
 }
 
 .contact-info-icon {
@@ -1301,12 +1307,17 @@ body::before {
   color: var(--text-primary);
   font-weight: 400;
   line-height: 1.5;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .contact-info-value a {
   color: var(--text-primary);
   text-decoration: none;
   transition: color 0.3s ease;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .contact-info-value a:hover {
@@ -1441,6 +1452,10 @@ body::before {
   .diff-section { padding: 80px 24px; }
   .roles-section { padding: 80px 24px; }
   .contact-section { padding: 80px 24px; }
+  .contact-inner { gap: 36px; }
+  .contact-info { margin-top: 28px; }
+  .contact-info-item { margin-bottom: 20px; }
+  .contact-form .btn-primary { width: 100%; align-self: stretch !important; text-align: center; }
   
   .services-grid { grid-template-columns: 1fr; }
   .about-stats { grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -1893,7 +1908,7 @@ body::before {
         </p>
       </div>
 
-      <div class="contact-info" style="margin-top: 48px;">
+      <div class="contact-info">
         <div class="contact-info-item reveal">
           <div class="contact-info-icon">
             <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
