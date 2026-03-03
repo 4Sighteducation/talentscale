@@ -478,6 +478,18 @@ body::before {
   animation: fadeSlideUp 1s var(--ease-out-expo) 1.2s forwards;
 }
 
+.hero-scroll::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 44px;
+  margin: 10px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(199, 99, 42, 0.95), transparent);
+  box-shadow: 0 10px 22px rgba(199, 99, 42, 0.18);
+  opacity: 0.85;
+}
+
 .btn-primary {
   padding: 16px 36px;
   background: linear-gradient(135deg, var(--accent-1), #d67d47);
@@ -586,6 +598,16 @@ body::before {
   max-width: 132px;
   filter: brightness(0) invert(1);
   opacity: 0.75;
+}
+
+.trust-logo-card.logo-deliveroo img {
+  height: clamp(32px, 3vw, 44px);
+  max-width: min(240px, 80%);
+}
+
+.trust-logo-card.logo-cazoo img {
+  height: clamp(24px, 2.2vw, 30px);
+  max-width: min(176px, 80%);
 }
 
 .trust-logo-fallback {
@@ -756,7 +778,7 @@ body::before {
   font-weight: 700;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: var(--violet-400);
+  color: var(--accent-1);
   margin-bottom: 16px;
 }
 
@@ -790,7 +812,8 @@ body::before {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 36px;
   font-weight: 600;
-  color: var(--violet-400);
+  color: var(--accent-1);
+  text-shadow: 0 0 18px rgba(199, 99, 42, 0.28);
   line-height: 1;
   margin-bottom: 8px;
 }
@@ -827,7 +850,7 @@ body::before {
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--violet-600), transparent);
+  background: linear-gradient(90deg, transparent, rgba(199, 99, 42, 0.9), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -856,7 +879,7 @@ body::before {
 .service-icon svg {
   width: 24px;
   height: 24px;
-  stroke: var(--violet-400);
+  stroke: var(--accent-1);
   fill: none;
   stroke-width: 1.5;
   stroke-linecap: round;
@@ -919,8 +942,8 @@ body::before {
 }
 
 .diff-col-title.positive {
-  color: var(--violet-400);
-  border-bottom-color: var(--violet-600);
+  color: var(--accent-1);
+  border-bottom-color: rgba(199, 99, 42, 0.65);
 }
 
 .diff-col-title.contrast {
@@ -947,7 +970,8 @@ body::before {
 
 .diff-icon.check {
   background: rgba(5, 150, 105, 0.16);
-  color: var(--violet-400);
+  color: var(--accent-1);
+  box-shadow: 0 0 0 1px rgba(199, 99, 42, 0.22), 0 10px 24px rgba(199, 99, 42, 0.12);
   font-size: 14px;
 }
 
@@ -1021,9 +1045,10 @@ body::before {
 }
 
 .role-tag:hover {
-  border-color: var(--violet-500);
+  border-color: rgba(199, 99, 42, 0.65);
   color: var(--text-primary);
-  background: rgba(5, 150, 105, 0.1);
+  background: rgba(199, 99, 42, 0.08);
+  box-shadow: 0 10px 28px rgba(199, 99, 42, 0.16), 0 0 0 1px rgba(199, 99, 42, 0.18);
 }
 
 /* ═══════════════════════════════════════════
@@ -1052,9 +1077,9 @@ body::before {
 
 .quote-mark {
   font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 120px;
-  color: var(--violet-600);
-  opacity: 0.2;
+  font-size: 110px;
+  color: rgba(199, 99, 42, 0.95);
+  opacity: 0.18;
   line-height: 0.8;
   margin-bottom: -20px;
 }
@@ -1065,11 +1090,12 @@ body::before {
   line-height: 1.5;
   color: var(--text-primary);
   font-style: italic;
+  letter-spacing: -0.2px;
 }
 
 .quote-text strong {
-  color: var(--violet-300);
-  font-weight: 600;
+  color: var(--accent-1);
+  font-weight: 700;
 }
 
 .quote-author {
@@ -1247,7 +1273,7 @@ body::before {
 .contact-info-icon svg {
   width: 20px;
   height: 20px;
-  stroke: var(--violet-400);
+  stroke: var(--accent-1);
   fill: none;
   stroke-width: 1.5;
 }
@@ -1837,9 +1863,9 @@ body::before {
 <!-- ═══════════ QUOTE ═══════════ -->
 <section class="quote-section">
   <div class="quote-inner reveal-scale">
-    <div class="quote-mark">"</div>
+    <div class="quote-mark">“</div>
     <p class="quote-text">
-      The best candidates aren't applying for jobs. They're busy doing exceptional work somewhere else. My job is knowing exactly who they are — and having the relationship to reach them.
+      The best candidates aren't applying for jobs. They're busy doing <strong>exceptional work</strong> somewhere else. My job is knowing exactly who they are — and having the <strong>relationship to reach them</strong>.
     </p>
     <div class="quote-author">— Jeff Hardie, Founder</div>
   </div>
