@@ -1149,20 +1149,74 @@ body::before {
   min-height: 140px;
 }
 
-.form-success {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #f6d0b6;
-  background: rgba(199, 99, 42, 0.12);
-  border: 1px solid rgba(199, 99, 42, 0.35);
-  border-radius: 10px;
-  padding: 10px 12px;
-}
-
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+}
+
+.form-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(2, 7, 6, 0.72);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1400;
+  padding: 20px;
+}
+
+.form-modal-backdrop.show {
+  display: flex;
+}
+
+.form-modal {
+  width: min(520px, 92vw);
+  border-radius: 16px;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  background: linear-gradient(160deg, rgba(6, 78, 59, 0.92), rgba(2, 44, 34, 0.94));
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.45);
+  padding: 22px 22px 18px;
+}
+
+.form-modal.error {
+  border-color: rgba(199, 99, 42, 0.45);
+}
+
+.form-modal-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 22px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.form-modal-message {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.form-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-modal-close {
+  border: 1px solid rgba(16, 185, 129, 0.32);
+  background: rgba(2, 44, 34, 0.7);
+  color: var(--text-primary);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.form-modal.error .form-modal-close {
+  border-color: rgba(199, 99, 42, 0.45);
 }
 
 .contact-info {
@@ -1318,11 +1372,31 @@ body::before {
 }
 
 @media (max-width: 768px) {
-  .nav { padding: 16px 24px; }
+  .nav {
+    padding: 16px 24px;
+    background: rgba(2, 44, 34, 0.92);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border-bottom: 1px solid rgba(52, 211, 153, 0.18);
+  }
   .nav.scrolled { padding: 12px 24px; }
   .nav-links { display: none; }
   .nav-cta { display: none; }
   .nav-mobile-toggle { display: block; }
+  .nav-links.mobile-open {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: absolute;
+    top: 64px;
+    left: 16px;
+    right: 16px;
+    padding: 14px 16px;
+    background: rgba(2, 44, 34, 0.96);
+    border: 1px solid rgba(16, 185, 129, 0.28);
+    border-radius: 14px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
+  }
   
   .hero { padding: 100px 24px 60px; }
   .section { padding: 80px 24px; }
@@ -1475,27 +1549,27 @@ body::before {
   <p class="trust-strip-sub">From fintech unicorns to DTC disruptors — a selection of the innovative companies I've placed exceptional talent at.</p>
   <div class="trust-logos">
     <div class="trust-logo-card">
-      <img src="https://logo.clearbit.com/deliveroo.co.uk" alt="Deliveroo logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <img src="web/public/logos/deliveroo.png" alt="Deliveroo logo" loading="lazy" onerror="this.style.display='none'">
       <span class="trust-logo-fallback">Deliveroo</span>
     </div>
     <div class="trust-logo-card">
-      <img src="https://logo.clearbit.com/monzo.com" alt="Monzo logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <img src="web/public/logos/monzo.png" alt="Monzo logo" loading="lazy" onerror="this.style.display='none'">
       <span class="trust-logo-fallback">Monzo</span>
     </div>
     <div class="trust-logo-card">
-      <img src="https://logo.clearbit.com/wise.com" alt="Wise logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <img src="web/public/logos/wise.png" alt="Wise logo" loading="lazy" onerror="this.style.display='none'">
       <span class="trust-logo-fallback">Wise</span>
     </div>
     <div class="trust-logo-card">
-      <img src="https://logo.clearbit.com/depop.com" alt="Depop logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <img src="web/public/logos/depop.png" alt="Depop logo" loading="lazy" onerror="this.style.display='none'">
       <span class="trust-logo-fallback">Depop</span>
     </div>
     <div class="trust-logo-card">
-      <img src="https://logo.clearbit.com/bloomandwild.com" alt="Bloom & Wild logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <img src="web/public/logos/bloom-and-wild.png" alt="Bloom & Wild logo" loading="lazy" onerror="this.style.display='none'">
       <span class="trust-logo-fallback">Bloom & Wild</span>
     </div>
     <div class="trust-logo-card">
-      <img src="https://logo.clearbit.com/cazoo.co.uk" alt="Cazoo logo" loading="lazy" referrerpolicy="no-referrer" onerror="this.style.display='none'">
+      <img src="web/public/logos/cazoo.png" alt="Cazoo logo" loading="lazy" onerror="this.style.display='none'">
       <span class="trust-logo-fallback">Cazoo</span>
     </div>
   </div>
@@ -1831,7 +1905,6 @@ body::before {
     <div>
       <form id="contactForm" class="contact-form reveal" action="https://formspree.io/f/xojnogzv" method="POST" accept-charset="UTF-8">
         <input type="hidden" name="_subject" value="New Talent Scale enquiry">
-        <input type="hidden" name="_replyto" value="jeff@talentscale.io">
         <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;" aria-hidden="true">
         <div class="form-row">
           <div class="form-group">
@@ -1855,10 +1928,9 @@ body::before {
           <label class="form-label">Message</label>
           <textarea class="form-textarea" name="message" placeholder="Tell me about the role you're looking to fill..." required></textarea>
         </div>
-        <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 8px;">
+        <button id="contactSubmitButton" type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 8px;">
           Send Message
         </button>
-        <div id="formSuccessMessage" class="form-success" style="display:none;">Thank you and I will be in touch soon</div>
       </form>
     </div>
   </div>
@@ -1880,6 +1952,16 @@ body::before {
     <path d="M20.52 3.48A11.9 11.9 0 0012.07 0C5.51 0 .17 5.34.17 11.9c0 2.1.55 4.14 1.6 5.95L0 24l6.33-1.66a11.9 11.9 0 005.74 1.46h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.42zM12.08 21.8h-.01a9.93 9.93 0 01-5.07-1.39l-.36-.21-3.76.99 1-3.67-.24-.38a9.9 9.9 0 01-1.52-5.24c0-5.47 4.46-9.92 9.94-9.92 2.65 0 5.14 1.03 7 2.9a9.83 9.83 0 012.9 7c0 5.47-4.46 9.92-9.93 9.92zm5.45-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47a8.98 8.98 0 01-1.66-2.07c-.17-.3-.02-.47.13-.62.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.01-1.04 2.46s1.06 2.85 1.2 3.05c.15.2 2.08 3.18 5.04 4.45.7.3 1.25.48 1.68.61.71.23 1.36.2 1.88.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35z"/>
   </svg>
 </a>
+
+<div id="formModalBackdrop" class="form-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="formModalTitle">
+  <div id="formModal" class="form-modal">
+    <div id="formModalTitle" class="form-modal-title">Thank you</div>
+    <div id="formModalMessage" class="form-modal-message">Thank you and I will be in touch soon</div>
+    <div class="form-modal-actions">
+      <button id="formModalClose" type="button" class="form-modal-close">Close</button>
+    </div>
+  </div>
+</div>
 
 <!-- ═══════════ SCRIPTS ═══════════ -->
 <script>
@@ -1922,27 +2004,81 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// AJAX submit for Formspree with inline success message
+// AJAX submit for Formspree with modal feedback
 const contactForm = document.getElementById('contactForm');
-const formSuccessMessage = document.getElementById('formSuccessMessage');
+const contactSubmitButton = document.getElementById('contactSubmitButton');
+const formModalBackdrop = document.getElementById('formModalBackdrop');
+const formModal = document.getElementById('formModal');
+const formModalTitle = document.getElementById('formModalTitle');
+const formModalMessage = document.getElementById('formModalMessage');
+const formModalClose = document.getElementById('formModalClose');
+
+function openFormModal(title, message, isError = false) {
+  if (!formModalBackdrop || !formModal || !formModalTitle || !formModalMessage) return;
+  formModalTitle.textContent = title;
+  formModalMessage.textContent = message;
+  formModal.classList.toggle('error', isError);
+  formModalBackdrop.classList.add('show');
+}
+
+function closeFormModal() {
+  if (formModalBackdrop) formModalBackdrop.classList.remove('show');
+}
+
+if (formModalClose) {
+  formModalClose.addEventListener('click', closeFormModal);
+}
+
+if (formModalBackdrop) {
+  formModalBackdrop.addEventListener('click', (e) => {
+    if (e.target === formModalBackdrop) closeFormModal();
+  });
+}
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeFormModal();
+});
+
 if (contactForm) {
   contactForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formData = new FormData(contactForm);
+    const emailField = contactForm.querySelector('input[name="email"]');
+    if (emailField && emailField.value) {
+      formData.set('_replyto', emailField.value);
+    }
+    if (contactSubmitButton) {
+      contactSubmitButton.disabled = true;
+      contactSubmitButton.textContent = 'Sending...';
+    }
     try {
       const response = await fetch(contactForm.action, {
         method: 'POST',
         body: formData,
         headers: { 'Accept': 'application/json' }
       });
+      let payload = null;
+      try {
+        payload = await response.json();
+      } catch (_) {
+        payload = null;
+      }
       if (response.ok) {
         contactForm.reset();
-        if (formSuccessMessage) {
-          formSuccessMessage.style.display = 'block';
-        }
+        openFormModal('Thank you', 'Thank you and I will be in touch soon');
+      } else {
+        const errMsg = payload && payload.errors && payload.errors.length
+          ? payload.errors.map(err => err.message).join(' ')
+          : 'Sorry, your message did not send. Please try again or email jeff@talentscale.io directly.';
+        openFormModal('Message not sent', errMsg, true);
       }
     } catch (err) {
-      // Keep silent to avoid exposing technical errors to visitors.
+      openFormModal('Connection issue', 'Sorry, we could not reach the form service. Please try again or email jeff@talentscale.io directly.', true);
+    } finally {
+      if (contactSubmitButton) {
+        contactSubmitButton.disabled = false;
+        contactSubmitButton.textContent = 'Send Message';
+      }
     }
   });
 }
